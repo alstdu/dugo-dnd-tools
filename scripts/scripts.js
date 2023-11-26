@@ -24,7 +24,7 @@ const getSpellFromUrl = async ( spellPath ) => {
 
     if ( DEBUG ) {
         const seed = Math.random();
-        const len = 10;
+        const len = 5;
         const offset = Math.floor( seed * ( spellsList.length - len ) );
         spellsList = spellsList.slice( offset, len + offset );
     }
