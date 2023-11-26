@@ -38,8 +38,8 @@ const getSpellFromUrl = async ( spellPath ) => {
             'spell-item-concentration',
             'spell-item-range',
         ],
-        item: `<tr id="spell-item">
-                <th class="spell-item-name"></td>
+        item: `<tr id="spell-item" aria-expanded="false">
+                <th class="spell-item-name"></th>
                 <td class="spell-item-level"></td>
                 <td class="spell-item-time"></td>
                 <td class="spell-item-school"></td>
@@ -51,7 +51,7 @@ const getSpellFromUrl = async ( spellPath ) => {
     // initialize the spells table with an empty array because we're going to fill it later async
     const spellsTable = new List( 'spells-table', options, [] );
 
-    spellsList.forEach( async ( spellSummary ) => {
+    const populatedList = Promise.all( spellsList.map( async ( spellSummary ) => {
         const url = spellSummary?.url;
         if ( !url ) {
             return;
@@ -66,6 +66,23 @@ const getSpellFromUrl = async ( spellPath ) => {
             'spell-item-range': spell.range,
         };
 
-        spellsTable.add( formattedSpell );
-    } );
+        // double destructuring ooo fancy
+        const [{elm}] = spellsTable.add( formattedSpell );
+
+        const detail = document.createElement( 'td' );
+        detail.innerText = 'HELLO!'; // TODO: add spell details
+        detail.style.display = 'none';
+        detail.style.flexBasis = '100%';
+        detail.style.height = '300px';
+        elm.appendChild( detail );
+
+        elm.addEventListener( 'click', () => {
+            const isCurrentlyExpanded = elm.getAttribute( 'aria-expanded' ) === 'true';
+            elm.setAttribute( 'aria-expanded', !isCurrentlyExpanded );
+            // if it's currently expanded, get rid of it - else make it show.
+            detail.style.display = isCurrentlyExpanded ? 'none' : 'table-cell';
+        } );
+    } ) );
+
+    console.log( await populatedList );
 } )();

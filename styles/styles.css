@@ -5,8 +5,60 @@
 body {
     margin: 0;
     min-height: 100vh;
-    
+
     display: flex;  
-    align-items: center;
     justify-content: center;
+    padding: 1em;
+}
+
+#spells-table {
+    margin-top: 10em;
+    width: 1200px;
+    min-width: 600px;
+    height: min-content;
+}
+
+#spells-table, #spells-table th, #spells-table td {
+    border: 0.1em solid black;
+    border-collapse: collapse;
+}
+
+#spells-table tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#spells-table td, #spells-table th {
+    flex: 1;
+}
+
+#spells-table tr .spell-item-name {
+    flex-basis: 0%;
+    flex-grow: 12;
+}
+
+#spells-table tr .spell-item-level {
+    flex-basis: 50px;
+    flex-grow: 1;
+}
+
+#spells-table tr .spell-item-time {
+    flex-basis: 0%;
+    flex-grow: 6;
+}
+
+#spells-table tr .spell-item-school {
+    flex-basis: 0%;
+    flex-grow: 8;
+}
+
+#spells-table tr .spell-item-concentration {
+    flex-basis: 35px;
+    flex-grow: 1;
+}
+
+#spells-table tr .spell-item-range {
+    flex-basis: 0%;
+    flex-grow: 4;
 }
