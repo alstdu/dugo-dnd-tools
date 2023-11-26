@@ -6,7 +6,7 @@
         <title>DnD Spells List</title>
     </head>
     <body>
-        <table>
+        <table id="spells-table">
             <caption>D&amp;D Spells</caption>
             <thead>
                 <tr>
@@ -18,15 +18,8 @@
                     <th>Range</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Counterspell</td>
-                    <td>3rd</td>
-                    <td>Reaction</td>
-                    <td>Abj.</td>
-                    <td>-</td>
-                    <td>60 feet</td>
-                </tr>
+            <tbody class="list">
+                <!-- JS will populate spells here -->
             </tbody>
         </table>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
