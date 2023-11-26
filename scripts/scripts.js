@@ -39,7 +39,7 @@ const getSpellFromUrl = async ( spellPath ) => {
             'spell-item-range',
         ],
         item: `<tr id="spell-item">
-                <td class="spell-item-name"></td>
+                <th class="spell-item-name"></td>
                 <td class="spell-item-level"></td>
                 <td class="spell-item-time"></td>
                 <td class="spell-item-school"></td>
