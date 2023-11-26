@@ -78,7 +78,23 @@ const getSpellFromUrl = async ( spellPath ) => {
         console.log( spell );
 
         // append inner stuff to detail
+        // create a p tag with a span inside
+        const durationElm = document.createElement( 'p' );
+        const durationSpanElm = document.createElement( 'span' );
+        durationSpanElm.style.fontWeight = 'bold';
+        durationSpanElm.innerText = 'Duration: ';
+        // durationSpanElm needs to be appended first so that it shows up on the left
+        durationElm.appendChild( durationSpanElm );
+        // now that we appended the span we can ADD the text
+        // note: we are adding the text with += not overwriting it with =, lest we nuke the poor span :(
+        // note also that: we are using innerHTML instead of innerText, else...
+        // the text from the span stays but the span itself dissapears...
+        // which is very fun to debug as a beginner
+        durationElm.innerHTML += spell.duration;
+        detailElm.appendChild( durationElm );
+
         // spell.desc is a list of strings that represent paragraphs
+        // note: the spell "confusion" is an interesting test case here...
         spell.desc.forEach( ( paragraphText ) => {
             const descriptionElm = document.createElement( 'p' );
             descriptionElm.innerText = paragraphText;
