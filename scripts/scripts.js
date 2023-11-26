@@ -93,6 +93,21 @@ const getSpellFromUrl = async ( spellPath ) => {
         durationElm.innerHTML += spell.duration;
         detailElm.appendChild( durationElm );
 
+        if ( spell.components.length > 0 ) {
+            const componentsElm = document.createElement( 'p' );
+            const componentsSpanElm = document.createElement( 'span' );
+            componentsSpanElm.style.fontWeight = 'bold';
+            componentsSpanElm.innerText = 'Components: ';
+            componentsElm.appendChild( componentsSpanElm );
+            detailElm.appendChild( componentsElm );
+            spell.components.forEach( ( component ) => {
+                const componentElm = document.createElement( 'span' );
+                componentElm.innerText = component;
+                componentsElm.appendChild( componentElm );
+            } );
+        }
+
+
         // spell.desc is a list of strings that represent paragraphs
         // note: the spell "confusion" is an interesting test case here...
         spell.desc.forEach( ( paragraphText ) => {
