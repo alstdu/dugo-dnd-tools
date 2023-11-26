@@ -98,7 +98,10 @@ const getSpellFromUrl = async ( spellPath ) => {
         componentsSpanElm.style.fontWeight = 'bold';
         componentsSpanElm.innerText = 'Components: ';
         componentsElm.appendChild( componentsSpanElm );
-        componentsElm.innerHTML += spell.components.join( ', ' ); // TODO: for M components show material
+        componentsElm.innerHTML += spell.components.join( ', ' );
+        if ( spell.material ) {
+            componentsElm.innerHTML += ' (' + spell.material + ')';
+        }
         detailElm.appendChild( componentsElm );
 
 
