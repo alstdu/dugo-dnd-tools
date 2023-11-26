@@ -69,18 +69,44 @@ const getSpellFromUrl = async ( spellPath ) => {
         // double destructuring ooo fancy
         const [{elm}] = spellsTable.add( formattedSpell );
 
-        const detail = document.createElement( 'td' );
-        detail.innerText = 'HELLO!'; // TODO: add spell details
-        detail.style.display = 'none';
-        detail.style.flexBasis = '100%';
-        detail.style.height = '300px';
-        elm.appendChild( detail );
+        // configure detail
+        const detailElm = document.createElement( 'td' );
+        detailElm.style.display = 'none';
+        detailElm.style.flexBasis = '100%';
+        detailElm.style.minHeight = '300px';
+
+        console.log( spell );
+
+        // append inner stuff to detail
+        // spell.desc is a list of strings that represent paragraphs
+        spell.desc.forEach( ( paragraphText ) => {
+            const descriptionElm = document.createElement( 'p' );
+            descriptionElm.innerText = paragraphText;
+            detailElm.appendChild( descriptionElm );
+        } );
+
+        if ( spell.higher_level.length > 0 ) {
+            const atHigherLevelsElm = document.createElement( 'p' );
+            atHigherLevelsElm.innerText = 'At higher levels:';
+            atHigherLevelsElm.style.fontWeight = 'bold';
+            detailElm.appendChild( atHigherLevelsElm );
+        }
+
+        // spell.higher_level is a list of strings that represent paragraphs
+        spell.higher_level.forEach( ( paragraphText ) => {
+            const higherLevelElm = document.createElement( 'p' );
+            higherLevelElm.innerText = paragraphText;
+            detailElm.appendChild( higherLevelElm );
+        } );
+
+        // append detail
+        elm.appendChild( detailElm );
 
         elm.addEventListener( 'click', () => {
             const isCurrentlyExpanded = elm.getAttribute( 'aria-expanded' ) === 'true';
             elm.setAttribute( 'aria-expanded', !isCurrentlyExpanded );
             // if it's currently expanded, get rid of it - else make it show.
-            detail.style.display = isCurrentlyExpanded ? 'none' : 'table-cell';
+            detailElm.style.display = isCurrentlyExpanded ? 'none' : 'table-cell';
         } );
     } ) );
 
