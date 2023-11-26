@@ -2,5 +2,8 @@
   "name": "dugo-dnd-tools",
   "version": "1.0.0",
   "description": "A set of d&d tools for BCIT New Media Design and Web Development MDIA2294 Web Scripting term project.",
-  "author": "Lexi Dugo"
+  "author": "Lexi Dugo",
+  "dependencies": {
+    "list.js": "^2.3.1"
+  }
 }
