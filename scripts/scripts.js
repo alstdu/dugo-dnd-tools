@@ -78,6 +78,14 @@ const getSpellFromUrl = async ( spellPath ) => {
         console.log( spell );
 
         // append inner stuff to detail
+        const levelElm = document.createElement( 'p' );
+        const levelSpanElm = document.createElement( 'span' );
+        levelSpanElm.style.fontWeight = 'bold';
+        levelSpanElm.innerText = 'Level: ';
+        levelElm.appendChild( levelSpanElm );
+        levelElm.innerHTML += spell.level; // TODO: use ternary to say cantrip if at 0
+        detailElm.appendChild( levelElm );
+
         // create a p tag with a span inside
         const durationElm = document.createElement( 'p' );
         const durationSpanElm = document.createElement( 'span' );
@@ -103,15 +111,6 @@ const getSpellFromUrl = async ( spellPath ) => {
             componentsElm.innerHTML += ' (' + spell.material + ')';
         }
         detailElm.appendChild( componentsElm );
-
-        const levelElm = document.createElement( 'p' );
-        const levelSpanElm = document.createElement( 'span' );
-        levelSpanElm.style.fontWeight = 'bold';
-        levelSpanElm.innerText = 'Level: ';
-        levelElm.appendChild( levelSpanElm );
-        levelElm.innerHTML += spell.level;
-        detailElm.appendChild( levelElm );
-
 
         // spell.desc is a list of strings that represent paragraphs
         // note: the spell "confusion" is an interesting test case here...
