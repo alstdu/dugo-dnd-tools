@@ -59,7 +59,7 @@ const getSpellFromUrl = async ( spellPath ) => {
         const spell = await getSpellFromUrl( url );
         const formattedSpell = {
             'spell-item-name': spell.name,
-            'spell-item-level': spell.level,
+            'spell-item-level': spell.level > 0 ? spell.level : 'Cantrip',
             'spell-item-time': spell.casting_time,
             'spell-item-school': spell.school.name,
             'spell-item-concentration': spell.concentration ? 'C' : '-',
@@ -83,7 +83,8 @@ const getSpellFromUrl = async ( spellPath ) => {
         levelSpanElm.style.fontWeight = 'bold';
         levelSpanElm.innerText = 'Level: ';
         levelElm.appendChild( levelSpanElm );
-        levelElm.innerHTML += spell.level; // TODO: use ternary to say cantrip if at 0
+        // If level is greater than 0, display the level. Else cantrip
+        levelElm.innerHTML += spell.level > 0 ? spell.level : 'Cantrip';
         detailElm.appendChild( levelElm );
 
         // create a p tag with a span inside
