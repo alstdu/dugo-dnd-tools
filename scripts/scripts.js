@@ -1,3 +1,4 @@
+// does the code even work? ...okay good
 console.log( 'hello world' );
 
 const API_BASE = 'https://www.dnd5eapi.co';
@@ -19,6 +20,8 @@ const getSpellFromUrl = async ( spellPath ) => {
     return await getJsonFromUrl( `${API_BASE}${spellPath}` );
 };
 
+// set up the canvas and states for the gradients
+//      these states will trigger on hover depending on the school
 const granimInstance = new Granim( {
     element: '#granim-background',
     name: 'granim-background',
@@ -103,6 +106,9 @@ const granimInstance = new Granim( {
 ( async () => {
     let spellsList = await getSpellsList();
 
+    // get a random set of spells for testing
+    // we don't want to overload the api with requests
+    //      and we don't want to wait for them all to load yet
     if ( DEBUG ) {
         const seed = Math.random();
         const len = 5;
@@ -110,6 +116,7 @@ const granimInstance = new Granim( {
         spellsList = spellsList.slice( offset, len + offset );
     }
 
+    // set up configuration for list.js
     const options = {
         valueNames: [
             'spell-item-name',
@@ -148,6 +155,7 @@ const granimInstance = new Granim( {
         };
 
         // double destructuring ooo fancy
+        // get the "elm" property from the first object in array
         const [{elm}] = spellsTable.add( formattedSpell );
 
         // add an extra td for the button that will allow TAB to be used
