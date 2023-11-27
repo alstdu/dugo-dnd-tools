@@ -108,9 +108,9 @@ const getSpellFromUrl = async ( spellPath ) => {
         const levelSpanElm = document.createElement( 'span' );
         levelSpanElm.style.fontWeight = 'bold';
         levelSpanElm.innerText = 'Level: ';
-        detailElm.appendChild( levelElm );
         levelElm.appendChild( levelSpanElm );
         levelElm.innerHTML += spell.level;
+        detailElm.appendChild( levelElm );
 
 
         // spell.desc is a list of strings that represent paragraphs
