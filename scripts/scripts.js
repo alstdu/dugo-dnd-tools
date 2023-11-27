@@ -59,17 +59,17 @@ const granimInstance = new Granim( {
         },
         'enchantment': {
             gradients: [
-                ['#FDC2EC', '#F99BDF'],
+                ['#c77dff', '#F99BDF'],
                 ['#E693D4', '#D175C2'],
-                ['#C27CBE', '#9F3A9C'],
+                ['#C27CBE', '#ffd6ff'],
             ],
             transitionSpeed: 4000,
         },
         'evocation': {
             gradients: [
                 ['#CAA19D', '#B56459'],
-                ['#F26D51', '#EE5A3B'],
-                ['#5C2F28', '#B78987'],
+                ['#bc8034', '#ED593C'],
+                ['#5C2F28', '#f63e02'],
             ],
             transitionSpeed: 4000,
         },
@@ -85,7 +85,7 @@ const granimInstance = new Granim( {
             gradients: [
                 ['#DDF19D', '#AFF07B'],
                 ['#B5F499', '#7B920A'],
-                ['#1A2980', '#9ef01a'],
+                ['#46494c', '#9ef01a'],
             ],
             transitionSpeed: 4000,
         },
@@ -150,6 +150,15 @@ const granimInstance = new Granim( {
         // double destructuring ooo fancy
         const [{elm}] = spellsTable.add( formattedSpell );
 
+        // add an extra td for the button that will allow TAB to be used
+        // to expand the rows
+        const expandCell = document.createElement( 'td' );
+        elm.insertBefore( expandCell, elm.firstChild );
+        // add a button inside of the new td we created
+        const expandButton = document.createElement( 'button' );
+        expandButton.innerText = '+';
+        expandCell.appendChild( expandButton );
+
         // configure detail
         const detailElm = document.createElement( 'td' );
         detailElm.style.display = 'none';
@@ -164,7 +173,7 @@ const granimInstance = new Granim( {
         levelSpanElm.style.fontWeight = 'bold';
         levelSpanElm.innerText = 'Level: ';
         levelElm.appendChild( levelSpanElm );
-        // If level is greater than 0, display the level. Else cantrip
+        // if level is greater than 0, display the level. Else cantrip
         levelElm.innerHTML += spell.level > 0 ? spell.level : 'Cantrip';
         detailElm.appendChild( levelElm );
 
@@ -188,7 +197,9 @@ const granimInstance = new Granim( {
         componentsSpanElm.style.fontWeight = 'bold';
         componentsSpanElm.innerText = 'Components: ';
         componentsElm.appendChild( componentsSpanElm );
+        // using join to add the comma and space to each item in the list
         componentsElm.innerHTML += spell.components.join( ', ' );
+        // if the spell uses a material, then we will display the material text
         if ( spell.material ) {
             componentsElm.innerHTML += ' (' + spell.material + ')';
         }
