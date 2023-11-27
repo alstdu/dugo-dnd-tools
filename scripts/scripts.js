@@ -19,6 +19,87 @@ const getSpellFromUrl = async ( spellPath ) => {
     return await getJsonFromUrl( `${API_BASE}${spellPath}` );
 };
 
+const granimInstance = new Granim( {
+    element: '#granim-background',
+    name: 'granim-background',
+    elToSetClassOn: 'body',
+    direction: 'diagonal',
+    isPausedWhenNotInView: true,
+    stateTransitionSpeed: 500,
+    states: {
+        'default-state': {
+            gradients: [
+                ['#FFFFFF', '#FFFFFF'],
+            ],
+            transitionSpeed: 0,
+        },
+        'abjuration': {
+            gradients: [
+                ['#A9E4FC', '#77C1F4'],
+                ['#9CB9E1', '#C0D1F2'],
+                ['#C0D1F2', '#b3b7ee'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'conjuration': {
+            gradients: [
+                ['#FAF894', '#FBE57C'],
+                ['#FAD058', '#F8A83B'],
+                ['#E68424', '#E67F30'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'divination': {
+            gradients: [
+                ['#BDE0F5', '#EBF5FB'],
+                ['#87BBDA', '#92AFC1'],
+                ['#AEBFC9', '#A5CDE3'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'enchantment': {
+            gradients: [
+                ['#FDC2EC', '#F99BDF'],
+                ['#E693D4', '#D175C2'],
+                ['#C27CBE', '#9F3A9C'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'evocation': {
+            gradients: [
+                ['#CAA19D', '#B56459'],
+                ['#F26D51', '#EE5A3B'],
+                ['#5C2F28', '#B78987'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'illusion': {
+            gradients: [
+                ['#EBD8FF', '#CFB0FC'],
+                ['#D7B2FE', '#B88DFB'],
+                ['#B88DFB', '#EBD8FF'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'necromancy': {
+            gradients: [
+                ['#DDF19D', '#AFF07B'],
+                ['#B5F499', '#7B920A'],
+                ['#1A2980', '#9ef01a'],
+            ],
+            transitionSpeed: 4000,
+        },
+        'transmutation': {
+            gradients: [
+                ['#B8874E', '#DB9453'],
+                ['#F9AD71', '#B8874E'],
+                ['#DB9453', '#F9AD71'],
+            ],
+            transitionSpeed: 4000,
+        },
+    },
+} );
+
 ( async () => {
     let spellsList = await getSpellsList();
 
@@ -143,6 +224,10 @@ const getSpellFromUrl = async ( spellPath ) => {
             elm.setAttribute( 'aria-expanded', !isCurrentlyExpanded );
             // if it's currently expanded, get rid of it - else make it show.
             detailElm.style.display = isCurrentlyExpanded ? 'none' : 'table-cell';
+        } );
+
+        elm.addEventListener( 'mouseover', () => {
+            granimInstance.changeState( spell.school.index );
         } );
     } ) );
 

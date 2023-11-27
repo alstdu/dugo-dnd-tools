@@ -7,22 +7,25 @@
         <title>DnD Spells List</title>
     </head>
     <body>
-        <table id="spells-table">
-            <caption>D&amp;D Spells</caption>
-            <thead>
-                <tr>
-                    <th class="spell-item-name">Name</th>
-                    <th class="spell-item-level">Level</th>
-                    <th class="spell-item-time">Time</th>
-                    <th class="spell-item-school">School</th>
-                    <th class="spell-item-concentration">C.</th>
-                    <th class="spell-item-range">Range</th>
-                </tr>
-            </thead>
-            <tbody class="list">
-                <!-- JS will populate spells here -->
-            </tbody>
-        </table>
+        <canvas id="granim-background"></canvas>
+        <div class="scrollable-main-container">
+            <table id="spells-table">
+                <caption>D&amp;D Spells</caption>
+                <thead>
+                    <tr>
+                        <th class="spell-item-name">Name</th>
+                        <th class="spell-item-level">Level</th>
+                        <th class="spell-item-time">Time</th>
+                        <th class="spell-item-school">School</th>
+                        <th class="spell-item-concentration">C.</th>
+                        <th class="spell-item-range">Range</th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <!-- JS will populate spells here -->
+                </tbody>
+            </table>
+        </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
         <script src="./scripts/plugins/granim.min.js"></script>
         <script src="./scripts/scripts.js"></script>
