@@ -104,6 +104,14 @@ const getSpellFromUrl = async ( spellPath ) => {
         }
         detailElm.appendChild( componentsElm );
 
+        const levelElm = document.createElement( 'p' );
+        const levelSpanElm = document.createElement( 'span' );
+        levelSpanElm.style.fontWeight = 'bold';
+        levelSpanElm.innerText = 'Level: ';
+        detailElm.appendChild( levelElm );
+        levelElm.appendChild( levelSpanElm );
+        levelElm.innerHTML += spell.level;
+
 
         // spell.desc is a list of strings that represent paragraphs
         // note: the spell "confusion" is an interesting test case here...
