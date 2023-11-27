@@ -29,6 +29,11 @@ body {
     justify-content: space-between;
 }
 
+#spells-table tr[aria-expanded="false"]:hover, #spells-table tr[aria-expanded="true"] {
+    box-shadow: inset 0px 0px 2px 3px rgba(39, 39, 39, 0.3);
+    background-color: rgba(247, 245, 245, 0.8);
+}
+
 #spells-table td, #spells-table th {
     flex: 1;
 }
