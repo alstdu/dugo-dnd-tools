@@ -43,16 +43,16 @@ const granimInstance = new Granim( {
         },
         'conjuration': {
             gradients: [
-                ['#FAF894', '#FBE57C'],
-                ['#FAD058', '#F8A83B'],
-                ['#E68424', '#E67F30'],
+                ['#FAF894', '#E67F30'],
+                ['#fbf8cc', '#F8A83B'],
+                ['#ef6351', '#f9dc5c'],
             ],
             transitionSpeed: 4000,
         },
         'divination': {
             gradients: [
                 ['#BDE0F5', '#EBF5FB'],
-                ['#87BBDA', '#92AFC1'],
+                ['#cfbaf0', '#7c98b3'],
                 ['#AEBFC9', '#A5CDE3'],
             ],
             transitionSpeed: 4000,
