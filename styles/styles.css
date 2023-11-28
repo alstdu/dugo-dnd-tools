@@ -32,7 +32,13 @@ body {
 
 search {
     margin-top: 5em;
-    transform: translateY( calc( 100% - 0.5em ) );
+    height: 3em;
+    transform: translateY( calc( 100% - 0.6em ) );
+}
+
+search form input {
+    height: 2em;
+    width: 300px;
 }
 
 #spells-table {
