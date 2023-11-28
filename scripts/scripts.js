@@ -21,7 +21,7 @@ const getSpellFromUrl = async ( spellPath ) => {
 };
 
 // set up the canvas and states for the gradients
-//      these states will trigger on hover depending on the school
+//      these states will trigger on hover and focus depending on the school
 const granimInstance = new Granim( {
     element: '#granim-background',
     name: 'granim-background',
@@ -227,6 +227,7 @@ const granimInstance = new Granim( {
             detailElm.appendChild( descriptionElm );
         } );
 
+        // if the spell has higher_level, it will display. else it won't show up
         if ( spell.higher_level.length > 0 ) {
             const atHigherLevelsElm = document.createElement( 'p' );
             atHigherLevelsElm.innerText = 'At higher levels:';
