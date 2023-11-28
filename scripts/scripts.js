@@ -134,6 +134,7 @@ const granimInstance = new Granim( {
                 <td class="spell-item-concentration"></td>
                 <td class="spell-item-range"></td>
             </tr>`,
+        searchDelay: 250, // debounce to help performance with large list
     };
 
     // initialize the spells table with an empty array because we're going to fill it later async
