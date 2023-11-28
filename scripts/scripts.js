@@ -168,6 +168,11 @@ const granimInstance = new Granim( {
         expandButton.innerText = '+';
         expandCell.appendChild( expandButton );
 
+        // TODO: evaluate if the following tabIndex logic is actually a good idea
+        elm.tabIndex = 0;
+        // TODO: can we set this to -1 if we let enter/space expand the row while tabbed?
+        expandButton.tabIndex = 0;
+
         // configure detail
         const detailElm = document.createElement( 'td' );
         detailElm.style.display = 'none';
