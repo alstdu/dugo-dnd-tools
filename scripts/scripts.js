@@ -264,4 +264,8 @@ const granimInstance = new Granim( {
     } ) );
 
     console.log( await populatedList );
+
+    document.getElementById( 'spell-search' ).addEventListener( 'input', ( e ) => {
+        spellsTable.search( e.target.value );
+    } );
 } )();

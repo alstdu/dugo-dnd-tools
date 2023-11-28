@@ -9,23 +9,33 @@
     <body>
         <canvas id="granim-background"></canvas>
         <div class="scrollable-main-container">
-            <table id="spells-table">
-                <caption>D&amp;D Spells</caption>
-                <thead>
-                    <tr>
-                        <th class="expand-button">Foo</th>
-                        <th class="spell-item-name">Name</th>
-                        <th class="spell-item-level">Level</th>
-                        <th class="spell-item-time">Time</th>
-                        <th class="spell-item-school">School</th>
-                        <th class="spell-item-concentration">C.</th>
-                        <th class="spell-item-range">Range</th>
-                    </tr>
-                </thead>
-                <tbody class="list">
-                    <!-- JS will populate spells here -->
-                </tbody>
-            </table>
+            <h1>D&D Spells Table</h1>
+            <div class="table-wrapper">
+                <search>
+                    <form action="./search/">
+                      <label for="spell-search" hidden>Find a Spell</label>
+                      <input type="search" id="spell-search" name="q" placeholder="Enter a Spell Name" />
+                      <button type="submit">Search</button>
+                    </form>
+                </search>
+                <table id="spells-table">
+                    <caption>D&amp;D Spells</caption>
+                    <thead>
+                        <tr>
+                            <th class="expand-button">Foo</th>
+                            <th class="spell-item-name">Name</th>
+                            <th class="spell-item-level">Level</th>
+                            <th class="spell-item-time">Time</th>
+                            <th class="spell-item-school">School</th>
+                            <th class="spell-item-concentration">C.</th>
+                            <th class="spell-item-range">Range</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        <!-- JS will populate spells here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
         <script src="./scripts/plugins/granim.min.js"></script>
