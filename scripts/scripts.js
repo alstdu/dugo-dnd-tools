@@ -137,7 +137,7 @@ const granimInstance = new Granim( {
     };
 
     // initialize the spells table with an empty array because we're going to fill it later async
-    const spellsTable = new List( 'spells-table', options, [] );
+    const spellsTable = new List( 'listjs-container', options, [] );
 
     const populatedList = Promise.all( spellsList.map( async ( spellSummary ) => {
         const url = spellSummary?.url;
@@ -264,8 +264,4 @@ const granimInstance = new Granim( {
     } ) );
 
     console.log( await populatedList );
-
-    document.getElementById( 'spell-search' ).addEventListener( 'input', ( e ) => {
-        spellsTable.search( e.target.value );
-    } );
 } )();

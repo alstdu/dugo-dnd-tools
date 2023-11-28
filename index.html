@@ -10,11 +10,12 @@
         <canvas id="granim-background"></canvas>
         <div class="scrollable-main-container">
             <h1>D&D Spells Table</h1>
-            <div class="table-wrapper">
+            <div class="table-wrapper" id="listjs-container">
                 <search>
                     <form action="./search/">
                       <label for="spell-search" hidden>Find a Spell</label>
-                      <input type="search" id="spell-search" name="q" placeholder="Enter a Spell Name" />
+                      <!-- the class "search" lets list.js find this -->
+                      <input type="search" id="spell-search" class="search" name="q" placeholder="Enter a Spell Name" />
                       <button type="submit">Search</button>
                     </form>
                 </search>
