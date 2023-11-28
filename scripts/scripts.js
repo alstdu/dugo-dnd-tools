@@ -245,9 +245,22 @@ const granimInstance = new Granim( {
             detailElm.style.display = isCurrentlyExpanded ? 'none' : 'table-cell';
         } );
 
-        elm.addEventListener( 'mouseover', () => {
-            granimInstance.changeState( spell.school.index );
-        } );
+        const setBg = () => granimInstance.changeState( spell.school.index );
+        const unsetBg = ( e ) => {
+            // TODO: use e.target to keep bg if we have a row open
+            granimInstance.changeState( 'default-state' );
+        };
+        // add highlight on both mouseover and focus
+        //     adding on focus makes the effect work with tabIndex
+        elm.addEventListener( 'mouseover', setBg );
+        elm.addEventListener( 'focus', setBg );
+        expandButton.addEventListener( 'focus', setBg );
+        // remove highlight when mouseout and on blur
+        //     which is apparently when it's not in focus
+        //     which makes sense I guess but... why not focus lost ?
+        elm.addEventListener( 'mouseout', unsetBg );
+        elm.addEventListener( 'blur', unsetBg );
+        expandButton.addEventListener( 'blur', unsetBg );
     } ) );
 
     console.log( await populatedList );
