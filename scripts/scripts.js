@@ -32,7 +32,7 @@ const granimInstance = new Granim( {
     states: {
         'default-state': {
             gradients: [
-                ['#FFFFFF', '#FFFFFF'],
+                ['#333333', '#888888'],
             ],
             transitionSpeed: 0,
         },
@@ -166,6 +166,7 @@ const granimInstance = new Granim( {
         // add a button inside of the new td we created
         const expandButton = document.createElement( 'button' );
         expandButton.innerText = '+';
+        expandButton.className = 'expand-button';
         expandCell.appendChild( expandButton );
 
         // TODO: evaluate if the following tabIndex logic is actually a good idea

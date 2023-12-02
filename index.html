@@ -22,18 +22,17 @@
             <div class="table-wrapper" id="listjs-container">
                 <search>
                     <form action="./search/">
-                        <label for="spell-search" hidden>Find a Spell</label>
+                        <label for="spell-search">Search</label>
                         <!-- the class "search" lets list.js find this -->
                         <input type="search" id="spell-search" class="search" name="q"
                             placeholder="Enter a Spell Name" />
-                        <button type="submit">Search</button>
                     </form>
                 </search>
                 <table id="spells-table">
                     <caption>D&amp;D Spells</caption>
                     <thead>
                         <tr>
-                            <th class="expand-button"></th>
+                            <th class="expand-button-header"></th>
                             <th class="spell-item-name">
                                 <button class="sort" data-sort="spell-item-name">Name</button>
                             </th>
