@@ -20,6 +20,20 @@ const getSpellFromUrl = async ( spellPath ) => {
     return await getJsonFromUrl( `${API_BASE}${spellPath}` );
 };
 
+// use the global variable OverlayScrollbarsGlobal to access the api
+// similar to how you can do it in node modules
+//     (this is straight from the documentation)
+const {
+    OverlayScrollbars,
+    ScrollbarsHidingPlugin,
+    SizeObserverPlugin,
+    ClickScrollPlugin,
+} = OverlayScrollbarsGlobal;
+
+// set up overlay scrollbar
+// eslint-disable-next-line new-cap
+OverlayScrollbars( document.querySelector( '.scrollable-main-container' ), {} );
+
 // set up the canvas and states for the gradients
 //      these states will trigger on hover and focus depending on the school
 const granimInstance = new Granim( {
