@@ -85,17 +85,18 @@ search form input {
     font-size: 0.6em;
     padding: 1.25em;
     background-color: hsla(208, 10%, 10%, 0.8);
+    color: unset;
 }
 
 search form input::placeholder {
-    color: white;
+    color: unset;
 }
 
 search label {
     display: block;
     font-size: 0.6em;
     margin-left: 1.25em;
-    color: white;
+    color: unset;
 }
 
 #spells-table {
@@ -158,7 +159,6 @@ search label {
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: hsla(208, 10%, 5%, 0.700);
-    color: white;
     border-top: 0.1em solid hsla(208, 10%, 90%, 0.2);
     border-bottom: 0.1em solid hsla(208, 10%, 90%, 0.2);
     border-collapse: collapse;
@@ -189,7 +189,7 @@ search label {
 }
 
 #spells-table tr .spell-item-level {
-    flex-basis: 60px;
+    flex-basis: 4em;
     flex-grow: 1;
 }
 
