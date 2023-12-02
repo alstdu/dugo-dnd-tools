@@ -22,11 +22,11 @@
             <div class="table-wrapper" id="listjs-container">
                 <search>
                     <form action="./search/">
-                      <label for="spell-search" hidden>Find a Spell</label>
-                      <!-- the class "search" lets list.js find this -->
+                        <label for="spell-search" hidden>Find a Spell</label>
+                        <!-- the class "search" lets list.js find this -->
                         <input type="search" id="spell-search" class="search" name="q"
                             placeholder="Enter a Spell Name" />
-                      <button type="submit">Search</button>
+                        <button type="submit">Search</button>
                     </form>
                 </search>
                 <table id="spells-table">
@@ -34,12 +34,24 @@
                     <thead>
                         <tr>
                             <th class="expand-button"></th>
-                            <th class="spell-item-name">Name</th>
-                            <th class="spell-item-level">Level</th>
-                            <th class="spell-item-time">Time</th>
-                            <th class="spell-item-school">School</th>
-                            <th class="spell-item-concentration">C.</th>
-                            <th class="spell-item-range">Range</th>
+                            <th class="spell-item-name">
+                                <button class="sort" data-sort="spell-item-name">Name</button>
+                            </th>
+                            <th class="spell-item-level">
+                                <button class="sort" data-sort="spell-item-level">Level</button>
+                            </th>
+                            <th class="spell-item-time">
+                                <button class="sort" data-sort="spell-item-time">Time</button>
+                            </th>
+                            <th class="spell-item-school">
+                                <button class="sort" data-sort="spell-item-school">School</button>
+                            </th>
+                            <th class="spell-item-concentration">
+                                <button class="sort" data-sort="spell-item-concentration">C.</button>
+                            </th>
+                            <th class="spell-item-range">
+                                <button class="sort" data-sort="spell-item-range">Range</button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="list">
