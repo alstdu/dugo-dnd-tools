@@ -1,5 +1,5 @@
 // does the code even work? ...okay good
-console.log( 'hello world' );
+// console.log( 'hello world' );
 
 const API_BASE = 'https://www.dnd5eapi.co';
 const DEBUG = true; // TODO: set to false before submit
@@ -117,6 +117,7 @@ const granimInstance = new Granim( {
     }
 
     // set up configuration for list.js
+    // TODOL: create custom sort function for range. it sorts alphabetical right now
     const options = {
         valueNames: [
             'spell-item-name',
