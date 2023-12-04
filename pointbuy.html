@@ -1,25 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <title>Point Buy Calculator</title>
-</head>
-<body>
-    <div class="calculator-frame">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.4.5/styles/overlayscrollbars.min.css"
+            integrity="sha512-A6YOz/Tv4+wyzq0s1++GYun5D04Lx0vJKJ/qKLhyPNLQfywZGKsktJhObK3SjIURR0Gy/Lw22jXMEoXFY5NUDg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Point Buy Calculator</title>
+    </head>
+    <body>
+        <canvas id="granim-background"></canvas>
         <div class="scrollable-main-container">
-            <header>
-                <nav>
-                    <ul>
-                        <li><a href="./index.html">Spells List</a></li>
-                        <li><a href="#">Point Buy Calculator</a></li>
-                        <li><a href="#">Spells Preparation</a></li>
-                    </ul>
-                </nav>
-            </header>
+            <div class="inner-main-container">
+                <header>
+                    <nav>
+                        <ul>
+                            <li><a href="./index.html">Spells List</a></li>
+                            <li><a href="#">Point Buy Calculator</a></li>
+                            <li><a href="#">Spells Preparation</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="calculator-frame">
+                    <h1>Point Buy Calculator</h1>
+                    <table id="point-table" class="table-styles">
+                        <caption>Point Buy Calculator</caption>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Ability Score</th>
+                                <th></th>
+                                <th>Racial Bonus</th>
+                                <th></th>
+                                <th>Total Score</th>
+                                <th>Ability Modifier</th>
+                                <th>Point Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Strength</td>
+                                <td>10</td>
+                                <td>+</td>
+                                <td>1</td>
+                                <td>=</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Dexterity</td>
+                                <td>10</td>
+                                <td>+</td>
+                                <td>1</td>
+                                <td>=</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Constitution</td>
+                                <td>10</td>
+                                <td>+</td>
+                                <td>1</td>
+                                <td>=</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Intelligence</td>
+                                <td>10</td>
+                                <td>+</td>
+                                <td>1</td>
+                                <td>=</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Wisdom</td>
+                                <td>10</td>
+                                <td>+</td>
+                                <td>1</td>
+                                <td>=</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Charisma</td>
+                                <td>10</td>
+                                <td>+</td>
+                                <td>1</td>
+                                <td>=</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button>reset</button></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total Points</td>
+                                <td class="point-total">13/27</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-    <script src="./scripts/scripts.js"></script>
-</body>
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.4.5/browser/overlayscrollbars.browser.es6.min.js"
+        integrity="sha512-C0rwyfLqz5Asrncj50D9aLJC5SY3QqtRhnkeTpPRLlos8R2seI3fY+z1Dq9zi3Pt/UDau/zXgDfNSMveZGhpjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./scripts/plugins/granim.min.js"></script>
+        <script src="./scripts/pointbuy.js"></script>
+    </body>
 </html>
