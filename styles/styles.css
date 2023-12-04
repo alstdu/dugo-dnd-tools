@@ -102,7 +102,7 @@ search label {
     color: unset;
 }
 
-#spells-table {
+.table-styles {
     width: 1200px;
     min-width: 600px;
     height: min-content;
@@ -112,20 +112,20 @@ search label {
     text-align: center;
 }
 
-#spells-table caption {
+.table-styles caption {
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
-#spells-table thead tr {
+.table-styles thead tr {
     border-radius: 1em 1em 0 0;
 }
 
-#spells-table th:not(.expand-button-header, .spell-item-name) {
+.table-styles th:not(.expand-button-header, .spell-item-name) {
     border-left: 0.1em solid hsla(208, 10%, 90%, 0.2);
 }
 
-#spells-table, #spells-table th, #spells-table td {
+.table-styles, .table-styles th, .table-styles td {
     /* border: 0.1em solid black; */
     border-collapse: collapse;
 }
@@ -157,7 +157,7 @@ search label {
     color: green;
 }
 
-#spells-table tr {
+.table-styles tr {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -168,12 +168,12 @@ search label {
     padding: 0.5em;
 }
 
-#spells-table tr[aria-expanded="false"]:hover, #spells-table tr[aria-expanded="true"] {
+.table-styles tr[aria-expanded="false"]:hover, .table-styles tr[aria-expanded="true"] {
     box-shadow: inset 0px 0px 2px 3px rgba(39, 39, 39, 0.3);
     background-color: hsla(0, 10%, 40%, 0.5)
 }
 
-#spells-table .expand-button {
+.table-styles .expand-button {
     background-color: unset;
     border: unset;
     color: unset;
@@ -182,7 +182,7 @@ search label {
     font-weight: bold;
 }
 
-#spells-table td, #spells-table th {
+.table-styles td, .table-styles th {
     flex: 1;
 }
 
