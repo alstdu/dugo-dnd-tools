@@ -1,3 +1,4 @@
+// set up the canvas and states for the gradients
 const granimInstance = new Granim( {
     element: '#granim-background',
     name: 'granim-background',
