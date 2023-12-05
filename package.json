@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "A set of d&d tools for BCIT New Media Design and Web Development MDIA2294 Web Scripting term project.",
   "author": "Lexi Dugo",
+  "private": true,
   "dependencies": {
     "list.js": "^2.3.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
