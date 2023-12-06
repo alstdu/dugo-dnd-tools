@@ -1,17 +1,22 @@
-import DiceBox from '@3d-dice/dice-box'
+import DiceBox from '@3d-dice/dice-box';
 
-console.log(DiceBox);
+console.log( DiceBox );
 
-const diceBox = new DiceBox("#dice-box", {
-    assetPath: '/public/assets/' // include the trailing backslash
-});
+const diceBox = new DiceBox( '#dice-box', {
+    assetPath: '/public/assets/',
+    scale: 9,
+} );
 
-diceBox.init().then(() => {
-    diceBox.roll('2d20')
-});
+diceBox.init().then( () => {
+    diceBox.roll( {
+        qty: 1, // optional - the number of dice to be rolled. Defaults to 1
+        sides: 20, // the type of die to be rolled. Either a number such as 20
+        themeColor: '#fff', // optional - HEX value for the theme's material color
+    } );
+} );
 
 // set up the canvas and states for the gradients
-const granimInstance = new Granim({
+const granimInstance = new Granim( {
     element: '#granim-background',
     name: 'granim-background',
     elToSetClassOn: 'body',
@@ -26,4 +31,4 @@ const granimInstance = new Granim({
             transitionSpeed: 0,
         },
     },
-});
+} );
