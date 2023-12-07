@@ -20,7 +20,7 @@ document.querySelector( '.d20-roll-button' )?.addEventListener( 'click', async (
         sides: 20, // the type of die to be rolled. Either a number such as 20
         themeColor: '#ffffff', // optional - HEX value for the theme's material color
     } );
-    console.log( result );
+    setDiceResult( result[0].value );
 } );
 
 document.querySelector( '.d10-roll-button' )?.addEventListener( 'click', async () => {
@@ -30,7 +30,7 @@ document.querySelector( '.d10-roll-button' )?.addEventListener( 'click', async (
         sides: 10, // the type of die to be rolled. Either a number such as 20
         themeColor: '#ffdfdd', // optional - HEX value for the theme's material color
     } );
-    console.log( result );
+    setDiceResult( result[0].value );
 } );
 
 document.querySelector( '.d8-roll-button' )?.addEventListener( 'click', async () => {
@@ -40,7 +40,7 @@ document.querySelector( '.d8-roll-button' )?.addEventListener( 'click', async ()
         sides: 8, // the type of die to be rolled. Either a number such as 20
         themeColor: '#424242', // optional - HEX value for the theme's material color
     } );
-    console.log( result );
+    setDiceResult( result[0].value );
 } );
 
 document.querySelector( '.d6-roll-button' )?.addEventListener( 'click', async () => {
@@ -50,7 +50,7 @@ document.querySelector( '.d6-roll-button' )?.addEventListener( 'click', async ()
         sides: 6, // the type of die to be rolled. Either a number such as 20
         themeColor: '#62C3F1', // optional - HEX value for the theme's material color
     } );
-    console.log( result );
+    setDiceResult( result[0].value );
 } );
 
 document.querySelector( '.d4-roll-button' )?.addEventListener( 'click', async () => {
