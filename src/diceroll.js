@@ -60,9 +60,12 @@ document.querySelector( '.d4-roll-button' )?.addEventListener( 'click', async ()
         sides: 4, // the type of die to be rolled. Either a number such as 20
         themeColor: '#62C322', // optional - HEX value for the theme's material color
     } );
-    console.log( result );
+    setDiceResult( result[0].value );
 } );
 
+const setDiceResult = ( diceResult ) => {
+    document.querySelector( '.display-dice-result' ).innerHTML = diceResult;
+};
 
 // set up the canvas and states for the gradients
 const granimInstance = new Granim( {
