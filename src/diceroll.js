@@ -4,7 +4,7 @@ console.log( DiceBox );
 
 const diceBox = new DiceBox( '#dice-box', {
     assetPath: '/public/assets/',
-    scale: 9,
+    scale: 8,
 } );
 
 diceBox.init().then( () => {

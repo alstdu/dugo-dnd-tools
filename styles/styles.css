@@ -74,12 +74,12 @@ nav ul a:hover {
 }
 
 #dice-box {
-    height: 1000px;
+    height: 900px;
     width: 100%;
 }
 
 #dice-box > canvas {
-    height: 1000px;
+    height: 900px;
     width: 100%;
 }
 search {
