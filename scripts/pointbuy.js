@@ -65,8 +65,10 @@ const granimInstance = new Granim( {
 
 // pseudo code: when the class "point-total"'s innertext is a certain number, then change colors
 
+// we are going to make the whole table in js to facilitate interactivity
 const pointTable = document.querySelector( '#point-table' );
 
+// make an array with all of the abilities for easier access
 const ablities = [
     'Strength',
     'Dexterity',
@@ -76,6 +78,8 @@ const ablities = [
     'Charisma',
 ];
 
+// for each ability...
+//    do a lot of things
 ablities.forEach( ( ability ) => {
     const tr = document.createElement( 'tr' );
     pointTable.appendChild( tr );

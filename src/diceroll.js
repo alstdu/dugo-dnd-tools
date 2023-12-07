@@ -1,8 +1,9 @@
+// import dice plugin and initialize
 import DiceBox from '@3d-dice/dice-box';
 
 const diceBox = new DiceBox( '#dice-box', {
     assetPath: '/public/assets/',
-    scale: 8,
+    scale: 8, // how big the dice are
 } );
 
 const diceBoxInit = diceBox.init();
@@ -13,22 +14,25 @@ const diceBoxInit = diceBox.init();
 //     sides: 20, // the type of die to be rolled. Either a number such as 20
 //     themeColor: '#ffffff', // optional - HEX value for the theme's material color
 // } ) );
+// TODO: honestly need to understand why this worked a bit more
 document.querySelector( '.d20-roll-button' )?.addEventListener( 'click', async () => {
     await diceBoxInit;
-    const result = await diceBox.roll( {
+    const result = await diceBox.roll( { // .roll returns a promise
         qty: 1, // optional - the number of dice to be rolled. Defaults to 1
         sides: 20, // the type of die to be rolled. Either a number such as 20
         themeColor: '#ffffff', // optional - HEX value for the theme's material color
     } );
-    setDiceResult( result[0].value );
+    setDiceResult( result[0].value ); // passes the .value of the result array to our innerText function
 } );
+
+// and now repeat with the other dice
 
 document.querySelector( '.d10-roll-button' )?.addEventListener( 'click', async () => {
     await diceBoxInit;
-    const result = await diceBox.roll( {
-        qty: 1, // optional - the number of dice to be rolled. Defaults to 1
-        sides: 10, // the type of die to be rolled. Either a number such as 20
-        themeColor: '#ffdfdd', // optional - HEX value for the theme's material color
+    const result = await diceBox.roll( { 
+        qty: 1,
+        sides: 10,
+        themeColor: '#ffdfdd',
     } );
     setDiceResult( result[0].value );
 } );
@@ -36,9 +40,9 @@ document.querySelector( '.d10-roll-button' )?.addEventListener( 'click', async (
 document.querySelector( '.d8-roll-button' )?.addEventListener( 'click', async () => {
     await diceBoxInit;
     const result = await diceBox.roll( {
-        qty: 1, // optional - the number of dice to be rolled. Defaults to 1
-        sides: 8, // the type of die to be rolled. Either a number such as 20
-        themeColor: '#424242', // optional - HEX value for the theme's material color
+        qty: 1,
+        sides: 8,
+        themeColor: '#424242',
     } );
     setDiceResult( result[0].value );
 } );
@@ -46,9 +50,9 @@ document.querySelector( '.d8-roll-button' )?.addEventListener( 'click', async ()
 document.querySelector( '.d6-roll-button' )?.addEventListener( 'click', async () => {
     await diceBoxInit;
     const result = await diceBox.roll( {
-        qty: 1, // optional - the number of dice to be rolled. Defaults to 1
-        sides: 6, // the type of die to be rolled. Either a number such as 20
-        themeColor: '#62C3F1', // optional - HEX value for the theme's material color
+        qty: 1,
+        sides: 6,
+        themeColor: '#62C3F1',
     } );
     setDiceResult( result[0].value );
 } );
@@ -56,18 +60,20 @@ document.querySelector( '.d6-roll-button' )?.addEventListener( 'click', async ()
 document.querySelector( '.d4-roll-button' )?.addEventListener( 'click', async () => {
     await diceBoxInit;
     const result = await diceBox.roll( {
-        qty: 1, // optional - the number of dice to be rolled. Defaults to 1
-        sides: 4, // the type of die to be rolled. Either a number such as 20
-        themeColor: '#62C322', // optional - HEX value for the theme's material color
+        qty: 1,
+        sides: 4,
+        themeColor: '#62C322',
     } );
     setDiceResult( result[0].value );
 } );
 
+// set whatever our dice result value from each roll was to the innerText of the div
 const setDiceResult = ( diceResult ) => {
     document.querySelector( '.display-dice-result' ).innerHTML = diceResult;
 };
 
 // set up the canvas and states for the gradients
+// for this one we just want one background state
 const granimInstance = new Granim( {
     element: '#granim-background',
     name: 'granim-background',
