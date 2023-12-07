@@ -64,3 +64,113 @@ const granimInstance = new Granim( {
 } );
 
 // pseudo code: when the class "point-total"'s innertext is a certain number, then change colors
+
+const pointTable = document.querySelector( '#point-table' );
+
+const ablities = [
+    'Strength',
+    'Dexterity',
+    'Constitution',
+    'Intelligence',
+    'Wisdom',
+    'Charisma',
+];
+
+ablities.forEach( ( ability ) => {
+    const tr = document.createElement( 'tr' );
+    pointTable.appendChild( tr );
+
+    const th = document.createElement( 'th' );
+    tr.appendChild( th );
+    th.innerText = ability;
+
+    // ////// //
+    // Score  //
+    const scoreTd = document.createElement( 'td' );
+    tr.appendChild( scoreTd );
+
+    const scoreMinusBtn = document.createElement( 'button' );
+    scoreTd.appendChild( scoreMinusBtn );
+    scoreMinusBtn.innerText = '-';
+
+    const scoreSpan = document.createElement( 'span' );
+    scoreTd.appendChild( scoreSpan );
+    scoreSpan.innerText = 8;
+
+    const scorePlusBtn = document.createElement( 'button' );
+    scoreTd.appendChild( scorePlusBtn );
+    scorePlusBtn.innerText = '+';
+
+    scoreMinusBtn.addEventListener( 'click', () => {
+        const currentValue = +scoreSpan.innerText; // + forces it to be a number
+        // TODO: enforce a minimum value by disabling the button and retuning so we don't decrement
+        scoreSpan.innerText = currentValue - 1;
+    } );
+
+    scorePlusBtn.addEventListener( 'click', () => {
+        const currentValue = +scoreSpan.innerText; // + forces it to be a number
+        // TODO: enforce a maximum value by disabling the button and retuning so we don't increment
+        scoreSpan.innerText = currentValue + 1;
+    } );
+    // END Score //
+    // ////////  //
+
+    const plusHolderTd = document.createElement( 'td' );
+    tr.appendChild( plusHolderTd );
+    plusHolderTd.innerText = '+';
+
+    // /////// //
+    // Racial  //
+    const racialTd = document.createElement( 'td' );
+    tr.appendChild( racialTd );
+
+    const racialMinusBtn = document.createElement( 'button' );
+    racialTd.appendChild( racialMinusBtn );
+    racialMinusBtn.innerText = '-';
+
+    const racialSpan = document.createElement( 'span' );
+    racialTd.appendChild( racialSpan );
+    racialSpan.innerText = 0;
+
+    const racialPlusBtn = document.createElement( 'button' );
+    racialTd.appendChild( racialPlusBtn );
+    racialPlusBtn.innerText = '+';
+
+    racialMinusBtn.addEventListener( 'click', () => {
+        const currentValue = +racialSpan.innerText; // + forces it to be a number
+        // TODO: enforce a minimum value by disabling the button and retuning so we don't decrement
+        racialSpan.innerText = currentValue - 1;
+    } );
+
+    racialPlusBtn.addEventListener( 'click', () => {
+        const currentValue = +racialSpan.innerText; // + forces it to be a number
+        // TODO: enforce a maximum value by disabling the button and retuning so we don't increment
+        racialSpan.innerText = currentValue + 1;
+    } );
+    // END Racial //
+    // /////////  //
+
+    const equalsHolderTd = document.createElement( 'td' );
+    tr.appendChild( equalsHolderTd );
+    equalsHolderTd.innerText = '=';
+
+    // /////////  //
+
+    const totalTd = document.createElement( 'td' );
+    tr.appendChild( totalTd );
+    const totalSpan = document.createElement( 'span' );
+    totalTd.appendChild( totalSpan );
+    totalSpan.innerText = 8;
+
+    const modifierTd = document.createElement( 'td' );
+    tr.appendChild( modifierTd );
+    const modifierSpan = document.createElement( 'span' );
+    modifierTd.appendChild( modifierSpan );
+    modifierSpan.innerText = -1;
+
+    const pointCostTd = document.createElement( 'td' );
+    tr.appendChild( pointCostTd );
+    const pointCostSpan = document.createElement( 'span' );
+    pointCostTd.appendChild( pointCostSpan );
+    pointCostSpan.innerText = 0;
+} );
