@@ -75,14 +75,23 @@ nav ul a:hover {
 }
 
 #dice-box {
-    /* min-height: 600px; */
+    /* background-color: hsla(100, 100%, 80%, 0.5); bgcol for debugging */
+    height: 0;
+    flex-basis: 400px;
+    flex-shrink: 0;
     flex-grow: 1;
     width: 100%;
+    /* shouldn't be needed, but the canvas is going rogue and adding a few extra px to it's height for reasons unknown */
+    overflow: hidden;
 }
 
 #dice-box > canvas {
     height: 100%;
     width: 100%;
+}
+
+.dice-ui {
+    position: relative;
 }
 
 .overlay-dice-ui {
