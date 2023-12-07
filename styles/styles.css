@@ -82,6 +82,19 @@ nav ul a:hover {
     height: 900px;
     width: 100%;
 }
+
+.dice-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 20em;
+}
+
+.dice-button-container > button {
+    width: 5em;
+    height: 2em;
+    font-size: large;
+}
+
 search {
     margin-top: 5em;
     /* should always be height of the caption */
