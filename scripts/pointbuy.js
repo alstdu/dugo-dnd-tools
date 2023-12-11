@@ -100,6 +100,7 @@ ablities.forEach( ( ability ) => {
     // score starts at 8 which is our minimum value, so disable button
     scoreMinusBtn.disabled = true;
     scoreMinusBtn.classList.add( 'disable-me-on-reset' );
+    scoreMinusBtn.classList.add( 'table-button' );
 
     const scoreSpan = document.createElement( 'span' );
     scoreTd.appendChild( scoreSpan );
@@ -110,6 +111,7 @@ ablities.forEach( ( ability ) => {
     scoreTd.appendChild( scorePlusBtn );
     scorePlusBtn.innerText = '+';
     scorePlusBtn.classList.add( 'enable-me-on-reset' );
+    scorePlusBtn.classList.add( 'table-button' );
 
     scoreMinusBtn.addEventListener( 'click', () => {
         const currentValue = +scoreSpan.innerText; // + forces it to be a number
@@ -164,19 +166,21 @@ ablities.forEach( ( ability ) => {
     const racialMinusBtn = document.createElement( 'button' );
     racialTd.appendChild( racialMinusBtn );
     racialMinusBtn.innerText = '-';
+    // we start at 0 so disable the button
+    racialMinusBtn.disabled = true;
+    racialMinusBtn.classList.add( 'disable-me-on-reset' );
+    racialMinusBtn.classList.add( 'table-button' );
 
     const racialSpan = document.createElement( 'span' );
     racialTd.appendChild( racialSpan );
     racialSpan.innerText = 0;
     racialSpan.classList.add( 'racial' );
-    // we start at 0 so disable the button
-    racialMinusBtn.disabled = true;
-    racialMinusBtn.classList.add( 'disable-me-on-reset' );
 
     const racialPlusBtn = document.createElement( 'button' );
     racialTd.appendChild( racialPlusBtn );
     racialPlusBtn.innerText = '+';
     racialPlusBtn.classList.add( 'enable-me-on-reset' );
+    racialPlusBtn.classList.add( 'table-button' );
 
     // The interactions for the racial buttons are almost identical to the ability score buttons
     // They don't affect point cost totals though, so they can be a bit simpler
@@ -283,6 +287,7 @@ tr.appendChild( document.createElement( 'td' ) );
 const resetBtn = document.createElement( 'button' );
 tr.appendChild( resetBtn );
 resetBtn.innerText = 'Reset';
+resetBtn.classList.add( 'table-button' );
 
 resetBtn.addEventListener( 'click', () => {
     // We could have added these elements to various arrays to keep track of them,
