@@ -187,7 +187,9 @@ search label {
 }
 
 .table-styles .table-button:disabled {
-    color: hsla(208, 10%, 5%, 0.700);
+    background-color: hsla(208, 10%, 50%, 0.2);
+    color: hsla(208, 10%, 95%, 0.25);
+    filter: blur( 1px );
 }
 
 .score {
