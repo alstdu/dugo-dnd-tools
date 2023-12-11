@@ -71,7 +71,7 @@ const ablities = [
     'Charisma',
 ];
 
-// For each ability...
+// for each ability...
 ablities.forEach( ( ability ) => {
     // create a new row for the ability
     const tr = document.createElement( 'tr' );
@@ -175,9 +175,9 @@ ablities.forEach( ( ability ) => {
     racialPlusBtn.classList.add( 'enable-me-on-reset' );
     racialPlusBtn.classList.add( 'table-button' );
 
-    // The interactions for the racial buttons are almost identical to the ability score buttons
-    // They don't affect point cost totals though, so they can be a bit simpler
-    // They also have different minimum and maximum values
+    // the interactions for the racial buttons are almost identical to the ability score buttons
+    // they don't affect point cost totals though, so they can be a bit simpler
+    // they also have different minimum and maximum values
     racialMinusBtn.addEventListener( 'click', () => {
         const currentValue = +racialSpan.innerText; // + forces it to be a number
         racialSpan.innerText = currentValue - 1;
@@ -204,13 +204,13 @@ ablities.forEach( ( ability ) => {
     // RACIAL BONUS //
     // ///////////  //
 
-    // Same as the plus holder above, we are just using this to visually show an "="
+    // same as the plus holder above, we are just using this to visually show an "="
     const equalsHolderTd = document.createElement( 'td' );
     tr.appendChild( equalsHolderTd );
     equalsHolderTd.innerText = '=';
     // /////////  //
 
-    // The total, modifier, and cost will be given default values here and then updated automatically
+    // the total, modifier, and cost will be given default values here and then updated automatically
     const totalTd = document.createElement( 'td' );
     tr.appendChild( totalTd );
     const totalSpan = document.createElement( 'span' );
@@ -283,7 +283,7 @@ resetBtn.innerText = 'Reset';
 resetBtn.classList.add( 'table-button' );
 
 resetBtn.addEventListener( 'click', () => {
-    // We could have added these elements to various arrays to keep track of them,
+    // we could have added these elements to various arrays to keep track of them,
     // but we can use classes to make the DOM keep track of them for us.
     // we can call it space efficiency and not laziness :) though performance isn't much of a concern here
     document.querySelectorAll( '.score' ).forEach( ( e ) => e.innerText = '8' );
