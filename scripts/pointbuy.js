@@ -78,18 +78,19 @@ const ablities = [
     'Charisma',
 ];
 
-// for each ability...
-//    do a lot of things
+// For each ability...
 ablities.forEach( ( ability ) => {
+    // create a new row for the ability
     const tr = document.createElement( 'tr' );
     pointTable.appendChild( tr );
 
+    // add a title for the row
     const th = document.createElement( 'th' );
     tr.appendChild( th );
     th.innerText = ability;
 
-    // ////// //
-    // Score  //
+    // ////////////  //
+    // ABILITY SCORE //
     const scoreTd = document.createElement( 'td' );
     tr.appendChild( scoreTd );
 
@@ -116,9 +117,10 @@ ablities.forEach( ( ability ) => {
         // we want all these values to update when we update the ability score
         updateTotal();
         updateModifier();
-        updatePointCost();
-        updateTotalCost();
-        // if you subtract from the max value, button becomes enabled again
+        updatePointCost(); // point costs get updated when ability scores change, but not racial
+        updateTotalCost(); // because we just changed a point cost, update the total
+        // if we just subtracted from the score, we must be allowed to add
+        // this could be redundant if it's already enabled, but it's faster than checking
         scorePlusBtn.disabled = false;
         // enforce a minimum value of 8
         //    if our currentValue is 8, then disable the minus button
@@ -134,24 +136,28 @@ ablities.forEach( ( ability ) => {
         // we want to update all these values again if we subtract
         updateTotal();
         updateModifier();
-        updatePointCost();
-        updateTotalCost();
-        // if we add to the score from the minimum 8, then enable the minus button
+        updatePointCost(); // point costs get updated when ability scores change, but not racial
+        updateTotalCost(); // because we just changed a point cost, update the total
+        // if we just added to the score, we must be allowed to subtract from it
+        // this could be redundant if it's already enabled, but it's faster than checking
         scoreMinusBtn.disabled = false;
         // 15 is the maximum
         if ( currentValue + 1 >= 15 ) {
             scorePlusBtn.disabled = true;
         }
     } );
-    // END Score //
-    // ////////  //
+    // ABILITY SCORE //
+    // ////////////  //
 
+    // We visually want to see ability score + racial bonus = total
+    // So we are adding a "+" button here in a td.
     const plusHolderTd = document.createElement( 'td' );
     tr.appendChild( plusHolderTd );
     plusHolderTd.innerText = '+';
+    // //////////////////////////////////////////////////////// //
 
-    // /////// //
-    // Racial  //
+    // ///////////  //
+    // RACIAL BONUS //
     const racialTd = document.createElement( 'td' );
     tr.appendChild( racialTd );
 
@@ -172,6 +178,9 @@ ablities.forEach( ( ability ) => {
     racialPlusBtn.innerText = '+';
     racialPlusBtn.classList.add( 'enable-me-on-reset' );
 
+    // The interactions for the racial buttons are almost identical to the ability score buttons
+    // They don't affect point cost totals though, so they can be a bit simpler
+    // They also have different minimum and maximum values
     racialMinusBtn.addEventListener( 'click', () => {
         const currentValue = +racialSpan.innerText; // + forces it to be a number
         racialSpan.innerText = currentValue - 1;
@@ -190,20 +199,21 @@ ablities.forEach( ( ability ) => {
         updateTotal();
         updateModifier();
         racialMinusBtn.disabled = false;
-        // enforce a maximum value by disabling the button and retuning so we don't increment
+        // enforce a maximum value by disabling the button
         if ( currentValue + 1 >= 2 ) {
             racialPlusBtn.disabled = true;
         }
     } );
-    // END Racial //
-    // /////////  //
+    // RACIAL BONUS //
+    // ///////////  //
 
+    // Same as the plus holder above, we are just using this to visually show an "="
     const equalsHolderTd = document.createElement( 'td' );
     tr.appendChild( equalsHolderTd );
     equalsHolderTd.innerText = '=';
-
     // /////////  //
 
+    // The total, modifier, and cost will be given default values here and then updated automatically
     const totalTd = document.createElement( 'td' );
     tr.appendChild( totalTd );
     const totalSpan = document.createElement( 'span' );
@@ -225,6 +235,8 @@ ablities.forEach( ( ability ) => {
     pointCostSpan.innerText = 0;
     pointCostSpan.classList.add( 'point-cost' ); // for referencing when totalling
 
+    // //////////////// //
+    // UPDATE FUNCTIONS //
     const updateTotal = () => {
         totalSpan.innerText = getTotal();
     };
@@ -259,6 +271,8 @@ ablities.forEach( ( ability ) => {
             return as - 8;
         }
     };
+    // UPDATE FUNCTIONS //
+    // //////////////// //
 } );
 
 const tr = document.createElement( 'tr' );
@@ -271,6 +285,9 @@ tr.appendChild( resetBtn );
 resetBtn.innerText = 'Reset';
 
 resetBtn.addEventListener( 'click', () => {
+    // We could have added these elements to various arrays to keep track of them,
+    // but we can use classes to make the DOM keep track of them for us.
+    // we can call it space efficiency and not laziness :) though performance isn't much of a concern here
     document.querySelectorAll( '.score' ).forEach( ( e ) => e.innerText = '8' );
     document.querySelectorAll( '.racial' ).forEach( ( e ) => e.innerText = '0' );
     document.querySelectorAll( '.total' ).forEach( ( e ) => e.innerText = '8' );
@@ -295,6 +312,8 @@ totalCostTitleSpan.innerText = 'Total Points:';
 
 const totalCostTd = document.createElement( 'td' );
 tr.appendChild( totalCostTd );
+// use two separate spans so that it is easier to edit and read the number
+// if we had made it '0/27' as a single span that would have been a nightmare to parse every time
 const totalCostSpan = document.createElement( 'span' );
 totalCostTd.appendChild( totalCostSpan );
 totalCostSpan.innerText = '0';
@@ -305,7 +324,8 @@ totalCostOutOfSpan.innerText = '/27';
 const updateTotalCost = () => {
     totalCostSpan.innerText = getTotalCost();
 };
-// TODOL: make the points cap out at 27 by disabling the buttons
+// TODO: make the points cap out at 27 by disabling the buttons
+//    but decide if you even want this
 const getTotalCost = () => {
     let total = 0;
     document.querySelectorAll( '.point-cost' ).forEach( ( e ) => total += parseInt( e.innerText ) );
