@@ -96,6 +96,7 @@ ablities.forEach( ( ability ) => {
     const scoreMinusBtn = document.createElement( 'button' );
     scoreTd.appendChild( scoreMinusBtn );
     scoreMinusBtn.innerText = '-';
+    scoreMinusBtn.disabled = true;
 
     const scoreSpan = document.createElement( 'span' );
     scoreTd.appendChild( scoreSpan );
@@ -114,6 +115,11 @@ ablities.forEach( ( ability ) => {
         updateModifier();
         updatePointCost();
         updateTotalCost();
+        scorePlusBtn.disabled = false;
+        // 8 is the minimum
+        if ( currentValue - 1 <= 8 ) {
+            scoreMinusBtn.disabled = true;
+        }
     } );
 
     scorePlusBtn.addEventListener( 'click', () => {
@@ -124,6 +130,11 @@ ablities.forEach( ( ability ) => {
         updateModifier();
         updatePointCost();
         updateTotalCost();
+        scoreMinusBtn.disabled = false;
+        // 15 is the maximum
+        if ( currentValue + 1 >= 15 ) {
+            scorePlusBtn.disabled = true;
+        }
     } );
     // END Score //
     // ////////  //
