@@ -27,7 +27,7 @@
 // SOFTWARE.
 
 const API_BASE = 'https://www.dnd5eapi.co';
-const DEBUG = false; // TODO: set to false before submit
+const DEBUG = true; // TODO: set to false before submit
 
 const getJsonFromUrl = async ( url ) => {
     const response = await fetch( url );
@@ -336,6 +336,14 @@ const granimInstance = new Granim( {
             descriptionElm.innerText = paragraphText;
             detailElm.appendChild( descriptionElm );
         } );
+
+        const rangeElm = document.createElement( 'p' );
+        const rangeTitleSpan = document.createElement( 'span' );
+        rangeTitleSpan.innerText = 'Range: ';
+        rangeElm.appendChild( rangeTitleSpan );
+        rangeTitleSpan.style.fontWeight = 'bold';
+        rangeElm.innerHTML += spell.range;
+        detailElm.appendChild( rangeElm );
 
         // if the spell has higher_level, it will display. else it won't show up
         if ( spell.higher_level.length > 0 ) {
