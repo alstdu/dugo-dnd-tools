@@ -223,3 +223,6 @@ ablities.forEach( ( ability ) => {
         }
     };
 } );
+
+const tr = document.createElement( 'tr' );
+pointTable.appendChild( tr );
