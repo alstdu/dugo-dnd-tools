@@ -109,12 +109,18 @@ ablities.forEach( ( ability ) => {
         const currentValue = +scoreSpan.innerText; // + forces it to be a number
         // TODO: enforce a minimum value by disabling the button and retuning so we don't decrement
         scoreSpan.innerText = currentValue - 1;
+        updateTotal();
+        updateModifier();
+        updatePointCost();
     } );
 
     scorePlusBtn.addEventListener( 'click', () => {
         const currentValue = +scoreSpan.innerText; // + forces it to be a number
         // TODO: enforce a maximum value by disabling the button and retuning so we don't increment
         scoreSpan.innerText = currentValue + 1;
+        updateTotal();
+        updateModifier();
+        updatePointCost();
     } );
     // END Score //
     // ////////  //
@@ -144,12 +150,16 @@ ablities.forEach( ( ability ) => {
         const currentValue = +racialSpan.innerText; // + forces it to be a number
         // TODO: enforce a minimum value by disabling the button and retuning so we don't decrement
         racialSpan.innerText = currentValue - 1;
+        updateTotal();
+        updateModifier();
     } );
 
     racialPlusBtn.addEventListener( 'click', () => {
         const currentValue = +racialSpan.innerText; // + forces it to be a number
         // TODO: enforce a maximum value by disabling the button and retuning so we don't increment
         racialSpan.innerText = currentValue + 1;
+        updateTotal();
+        updateModifier();
     } );
     // END Racial //
     // /////////  //
@@ -177,4 +187,39 @@ ablities.forEach( ( ability ) => {
     const pointCostSpan = document.createElement( 'span' );
     pointCostTd.appendChild( pointCostSpan );
     pointCostSpan.innerText = 0;
+
+    const updateTotal = () => {
+        totalSpan.innerText = getTotal();
+    };
+
+    const getTotal = () => {
+        const as = parseInt( scoreSpan.innerText );
+        const rm = parseInt( racialSpan.innerText );
+        return as + rm;
+    };
+
+    const updateModifier = () => {
+        modifierSpan.innerText = getModifier();
+    };
+
+    const getModifier = () => {
+        const t = parseInt( totalSpan.innerText );
+        return Math.floor( ( t - 10 ) / 2 );
+    };
+
+    const updatePointCost = () => {
+        pointCostSpan.innerText = getPointCost();
+    };
+
+    const getPointCost = () => {
+        const as = parseInt( scoreSpan.innerText );
+        switch ( as ) {
+        case 15:
+            return 9;
+        case 14:
+            return 7;
+        default:
+            return as - 8;
+        }
+    };
 } );
