@@ -170,7 +170,6 @@ search label {
 }
 
 .table-styles, .table-styles th, .table-styles td {
-    /* border: 0.1em solid black; */
     border-collapse: collapse;
 }
 
