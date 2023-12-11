@@ -100,6 +100,7 @@ ablities.forEach( ( ability ) => {
     const scoreSpan = document.createElement( 'span' );
     scoreTd.appendChild( scoreSpan );
     scoreSpan.innerText = 8;
+    scoreSpan.classList.add( 'score' );
 
     const scorePlusBtn = document.createElement( 'button' );
     scoreTd.appendChild( scorePlusBtn );
@@ -112,6 +113,7 @@ ablities.forEach( ( ability ) => {
         updateTotal();
         updateModifier();
         updatePointCost();
+        updateTotalCost();
     } );
 
     scorePlusBtn.addEventListener( 'click', () => {
@@ -121,6 +123,7 @@ ablities.forEach( ( ability ) => {
         updateTotal();
         updateModifier();
         updatePointCost();
+        updateTotalCost();
     } );
     // END Score //
     // ////////  //
@@ -141,6 +144,7 @@ ablities.forEach( ( ability ) => {
     const racialSpan = document.createElement( 'span' );
     racialTd.appendChild( racialSpan );
     racialSpan.innerText = 0;
+    racialSpan.classList.add( 'racial' );
 
     const racialPlusBtn = document.createElement( 'button' );
     racialTd.appendChild( racialPlusBtn );
@@ -175,18 +179,21 @@ ablities.forEach( ( ability ) => {
     const totalSpan = document.createElement( 'span' );
     totalTd.appendChild( totalSpan );
     totalSpan.innerText = 8;
+    totalSpan.classList.add( 'total' );
 
     const modifierTd = document.createElement( 'td' );
     tr.appendChild( modifierTd );
     const modifierSpan = document.createElement( 'span' );
     modifierTd.appendChild( modifierSpan );
     modifierSpan.innerText = -1;
+    modifierSpan.classList.add( 'modifier' );
 
     const pointCostTd = document.createElement( 'td' );
     tr.appendChild( pointCostTd );
     const pointCostSpan = document.createElement( 'span' );
     pointCostTd.appendChild( pointCostSpan );
     pointCostSpan.innerText = 0;
+    pointCostSpan.classList.add( 'point-cost' ); // for referencing when totalling
 
     const updateTotal = () => {
         totalSpan.innerText = getTotal();
@@ -226,3 +233,49 @@ ablities.forEach( ( ability ) => {
 
 const tr = document.createElement( 'tr' );
 pointTable.appendChild( tr );
+
+tr.appendChild( document.createElement( 'td' ) );
+
+const resetBtn = document.createElement( 'button' );
+tr.appendChild( resetBtn );
+resetBtn.innerText = 'Reset';
+
+resetBtn.addEventListener( 'click', () => {
+    document.querySelectorAll( '.score' ).forEach( ( e ) => e.innerText = '8' );
+    document.querySelectorAll( '.racial' ).forEach( ( e ) => e.innerText = '0' );
+    document.querySelectorAll( '.total' ).forEach( ( e ) => e.innerText = '8' );
+    document.querySelectorAll( '.modifier' ).forEach( ( e ) => e.innerText = '0' );
+    document.querySelectorAll( '.point-cost' ).forEach( ( e ) => e.innerText = '0' );
+    updateTotalCost();
+} );
+
+// TODO: use colspan instead of this monstrosity
+tr.appendChild( document.createElement( 'td' ) );
+tr.appendChild( document.createElement( 'td' ) );
+tr.appendChild( document.createElement( 'td' ) );
+tr.appendChild( document.createElement( 'td' ) );
+
+const totalCostTitleTd = document.createElement( 'td' );
+tr.appendChild( totalCostTitleTd );
+const totalCostTitleSpan = document.createElement( 'span' );
+totalCostTitleTd.appendChild( totalCostTitleSpan );
+totalCostTitleSpan.innerText = 'Total Points:';
+
+const totalCostTd = document.createElement( 'td' );
+tr.appendChild( totalCostTd );
+const totalCostSpan = document.createElement( 'span' );
+totalCostTd.appendChild( totalCostSpan );
+totalCostSpan.innerText = '0';
+const totalCostOutOfSpan = document.createElement( 'span' );
+totalCostTd.appendChild( totalCostOutOfSpan );
+totalCostOutOfSpan.innerText = '/27';
+
+const updateTotalCost = () => {
+    totalCostSpan.innerText = getTotalCost();
+};
+
+const getTotalCost = () => {
+    let total = 0;
+    document.querySelectorAll( '.point-cost' ).forEach( ( e ) => total += parseInt( e.innerText ) );
+    return total;
+};
