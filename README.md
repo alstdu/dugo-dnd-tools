@@ -16,5 +16,3 @@ Granim https://sarcadass.github.io/granim.js/ // interactive gradients // MIT Li
 
 # APIs used
 https://www.dnd5eapi.co/docs/ // spells list // MIT License // Copyright (c) [2018-2020] [Adrian Padua, Christopher Ward]
-
-
