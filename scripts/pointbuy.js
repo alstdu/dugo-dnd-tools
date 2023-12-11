@@ -96,7 +96,9 @@ ablities.forEach( ( ability ) => {
     const scoreMinusBtn = document.createElement( 'button' );
     scoreTd.appendChild( scoreMinusBtn );
     scoreMinusBtn.innerText = '-';
+    // score starts at 8 which is our minimum value, so disable button
     scoreMinusBtn.disabled = true;
+    scoreMinusBtn.classList.add( 'disable-me-on-reset' );
 
     const scoreSpan = document.createElement( 'span' );
     scoreTd.appendChild( scoreSpan );
@@ -106,17 +108,20 @@ ablities.forEach( ( ability ) => {
     const scorePlusBtn = document.createElement( 'button' );
     scoreTd.appendChild( scorePlusBtn );
     scorePlusBtn.innerText = '+';
+    scorePlusBtn.classList.add( 'enable-me-on-reset' );
 
     scoreMinusBtn.addEventListener( 'click', () => {
         const currentValue = +scoreSpan.innerText; // + forces it to be a number
-        // TODO: enforce a minimum value by disabling the button and retuning so we don't decrement
         scoreSpan.innerText = currentValue - 1;
+        // we want all these values to update when we update the ability score
         updateTotal();
         updateModifier();
         updatePointCost();
         updateTotalCost();
+        // if you subtract from the max value, button becomes enabled again
         scorePlusBtn.disabled = false;
-        // 8 is the minimum
+        // enforce a minimum value of 8
+        //    if our currentValue is 8, then disable the minus button
         if ( currentValue - 1 <= 8 ) {
             scoreMinusBtn.disabled = true;
         }
@@ -124,12 +129,14 @@ ablities.forEach( ( ability ) => {
 
     scorePlusBtn.addEventListener( 'click', () => {
         const currentValue = +scoreSpan.innerText; // + forces it to be a number
-        // TODO: enforce a maximum value by disabling the button and retuning so we don't increment
+        // enforce a maximum value by disabling the button
         scoreSpan.innerText = currentValue + 1;
+        // we want to update all these values again if we subtract
         updateTotal();
         updateModifier();
         updatePointCost();
         updateTotalCost();
+        // if we add to the score from the minimum 8, then enable the minus button
         scoreMinusBtn.disabled = false;
         // 15 is the maximum
         if ( currentValue + 1 >= 15 ) {
@@ -156,25 +163,37 @@ ablities.forEach( ( ability ) => {
     racialTd.appendChild( racialSpan );
     racialSpan.innerText = 0;
     racialSpan.classList.add( 'racial' );
+    // we start at 0 so disable the button
+    racialMinusBtn.disabled = true;
+    racialMinusBtn.classList.add( 'disable-me-on-reset' );
 
     const racialPlusBtn = document.createElement( 'button' );
     racialTd.appendChild( racialPlusBtn );
     racialPlusBtn.innerText = '+';
+    racialPlusBtn.classList.add( 'enable-me-on-reset' );
 
     racialMinusBtn.addEventListener( 'click', () => {
         const currentValue = +racialSpan.innerText; // + forces it to be a number
-        // TODO: enforce a minimum value by disabling the button and retuning so we don't decrement
         racialSpan.innerText = currentValue - 1;
         updateTotal();
         updateModifier();
+        racialPlusBtn.disabled = false;
+        // enforce a minimum value by disabling the button
+        if ( currentValue - 1 == 0 ) {
+            racialMinusBtn.disabled = true;
+        }
     } );
 
     racialPlusBtn.addEventListener( 'click', () => {
         const currentValue = +racialSpan.innerText; // + forces it to be a number
-        // TODO: enforce a maximum value by disabling the button and retuning so we don't increment
         racialSpan.innerText = currentValue + 1;
         updateTotal();
         updateModifier();
+        racialMinusBtn.disabled = false;
+        // enforce a maximum value by disabling the button and retuning so we don't increment
+        if ( currentValue + 1 >= 2 ) {
+            racialPlusBtn.disabled = true;
+        }
     } );
     // END Racial //
     // /////////  //
@@ -257,6 +276,8 @@ resetBtn.addEventListener( 'click', () => {
     document.querySelectorAll( '.total' ).forEach( ( e ) => e.innerText = '8' );
     document.querySelectorAll( '.modifier' ).forEach( ( e ) => e.innerText = '0' );
     document.querySelectorAll( '.point-cost' ).forEach( ( e ) => e.innerText = '0' );
+    document.querySelectorAll( '.disable-me-on-reset' ).forEach( ( e ) => e.disabled = true );
+    document.querySelectorAll( '.enable-me-on-reset' ).forEach( ( e ) => e.disabled = false );
     updateTotalCost();
 } );
 
@@ -284,7 +305,7 @@ totalCostOutOfSpan.innerText = '/27';
 const updateTotalCost = () => {
     totalCostSpan.innerText = getTotalCost();
 };
-
+// TODOL: make the points cap out at 27 by disabling the buttons
 const getTotalCost = () => {
     let total = 0;
     document.querySelectorAll( '.point-cost' ).forEach( ( e ) => total += parseInt( e.innerText ) );
