@@ -28,42 +28,35 @@ const granimInstance = new Granim( {
             ],
             transitionSpeed: 0,
         },
-        'up-to-6': {
+        'under-budget': {
             gradients: [
-                ['#A9E4FC', '#77C1F4'],
-                ['#9CB9E1', '#C0D1F2'],
-                ['#C0D1F2', '#b3b7ee'],
+                ['#16697a', '#489fb5'],
+                ['#489fb5', '#82c0cc'],
+                ['#82c0cc', '#ede7e3'],
+                ['#ede7e3', '#ffa62b'],
+                ['#ffa62b', '#16697a'],
             ],
             transitionSpeed: 3000,
         },
-        'up-to-13': {
+        'on-budget': {
             gradients: [
-                ['#FAF894', '#E67F30'],
-                ['#fbf8cc', '#F8A83B'],
-                ['#ef6351', '#f9dc5c'],
+                ['#52b69a', '#99d98c'],
+                ['#99d98c', '#b5e48c'],
+                ['#b5e48c', '#2b9348'],
             ],
             transitionSpeed: 3000,
         },
-        'up-to-20': {
+        'over-budget': {
             gradients: [
-                ['#BDE0F5', '#EBF5FB'],
-                ['#cfbaf0', '#7c98b3'],
-                ['#AEBFC9', '#A5CDE3'],
-            ],
-            transitionSpeed: 3000,
-        },
-        'up-to-27': {
-            gradients: [
-                ['#c77dff', '#F99BDF'],
-                ['#E693D4', '#D175C2'],
-                ['#C27CBE', '#ffd6ff'],
+                ['#f7b267', '#f27059'],
+                ['#f27059', '#a11d33'],
+                ['#a11d33', '#f7b267'],
             ],
             transitionSpeed: 3000,
         },
     },
 } );
 
-// pseudo code: when the class "point-total"'s innertext is a certain number, then change colors
 
 // we are going to make the whole table in js to facilitate interactivity
 const pointTable = document.querySelector( '#point-table' );
@@ -327,10 +320,20 @@ totalCostTd.appendChild( totalCostOutOfSpan );
 totalCostOutOfSpan.innerText = '/27';
 
 const updateTotalCost = () => {
-    totalCostSpan.innerText = getTotalCost();
+    const totalCost = getTotalCost();
+    totalCostSpan.innerText = totalCost;
+    // when total cost is a certain number, then change colors
+    if ( totalCost <= 0 ) {
+        granimInstance.changeState( 'default-state' );
+    } else if ( totalCost < 27 ) {
+        granimInstance.changeState( 'under-budget' );
+    } else if ( totalCost == 27 ) {
+        granimInstance.changeState( 'on-budget' );
+    } else if ( totalCost > 27 ) {
+        granimInstance.changeState( 'over-budget' );
+    }
 };
-// TODO: make the points cap out at 27 by disabling the buttons
-//    but decide if you even want this
+
 const getTotalCost = () => {
     let total = 0;
     document.querySelectorAll( '.point-cost' ).forEach( ( e ) => total += parseInt( e.innerText ) );
