@@ -316,7 +316,7 @@ search label {
 /* SPELLS TABLE MEDIA QUERIES */
 
 @media ( max-width: 992px ) {
-    #spells-table tr .spell-item-range {
+    #spells-table tr .spell-item-school {
         /* display: none would work but this is way cooler */
         flex-basis: 0%;
         flex-grow: 0;
@@ -327,20 +327,8 @@ search label {
 }
 
 @media ( max-width: 768px ) {
-    .table-styles .expand-button {
-        /* transform: scale( 1.2 ) translateX( 0 ); */
-    }
-
     .table-wrapper {
         font-size: 0.75em;
-    }
-
-    #spells-table tr .spell-item-concentration {
-        flex-basis: 0%;
-        flex-grow: 0;
-        transform: scaleX( 0% );
-        width: 0;
-        height: 0;
     }
 
     #spells-table caption {
@@ -349,11 +337,39 @@ search label {
 }
 
 @media ( max-width: 600px ) {
+    .table-wrapper {
+        font-size: 1em;
+    }
+
     body {
         font-size: 1em;
     }
 
-    #spells-table tr .spell-item-level {
+    .table-styles {
+        border-radius: 0;
+    }
+
+    .table-styles thead tr {
+        border-radius: 0;
+    }
+
+    .table-wrapper {
+        padding: 0;
+    }
+}
+
+@media ( max-width: 550px ) {
+    #spells-table tr .spell-item-concentration {
+        flex-basis: 0%;
+        flex-grow: 0;
+        transform: scaleX( 0% );
+        width: 0;
+        height: 0;
+    }
+}
+
+@media ( max-width: 460px ) {
+    #spells-table tr .spell-item-range {
         flex-basis: 0%;
         flex-grow: 0;
         transform: scaleX( 0% );
@@ -366,18 +382,24 @@ search label {
     search form input {
         width: 200px;
     }
+
+    header {
+        font-size: 0.75em;
+    }
+}
+
+@media ( max-width: 370px ) {
+    #spells-table tr .spell-item-time {
+        flex-basis: 0%;
+        flex-grow: 0;
+        transform: scaleX( 0% );
+        width: 0;
+        height: 0;
+    }
 }
 
 @media ( max-width: 325px ) {
     search form input {
         width: 150px;
-    }
-
-    .table-styles {
-        border-radius: 0;
-    }
-
-    .table-wrapper {
-        padding: 0;
     }
 }
