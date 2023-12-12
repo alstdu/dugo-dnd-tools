@@ -414,5 +414,12 @@ const granimInstance = new Granim( {
         expandButton.addEventListener( 'blur', unsetBg );
     } ) );
 
-    console.log( await populatedList );
+    await populatedList;
+
+    document.querySelector( '.preload' ).classList.remove( 'preload' );
+    const overlay = document.querySelector( '#loading-overlay' );
+    overlay.style.opacity = '0%';
+    setTimeout( () => {
+        overlay.style.display = 'none';
+    }, 1000 );
 } )();

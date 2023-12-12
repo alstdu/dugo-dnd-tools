@@ -17,6 +17,9 @@
     <body>
         <!-- Each school has a different interactive gradient! -->
         <canvas id="granim-background"></canvas>
+        <div id="loading-overlay">
+            <div class="loading-icon"></div>
+        </div>
         <div class="scrollable-main-container">
             <div class="inner-main-container">
                 <header>
@@ -29,7 +32,7 @@
                     </nav>
                 </header>
                 <h1>D&D Spells Table</h1>
-                <div class="table-wrapper" id="listjs-container">
+                <div class="table-wrapper preload" id="listjs-container">
                     <search>
                         <form action="./search/">
                             <label for="spell-search">Search</label>
