@@ -289,6 +289,7 @@ const granimInstance = new Granim( {
         detailElm.style.display = 'none';
         detailElm.style.flexBasis = '100%';
         detailElm.style.minHeight = '300px';
+        detailElm.classList.add( 'spell-item-detail' );
 
         console.log( spell );
 
