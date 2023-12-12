@@ -277,6 +277,10 @@ search label {
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.table-wrapper, .calculator-frame, header, body, search form input {
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 #spells-table tr .spell-item-name {
     flex-basis: 8em;
     flex-grow: 12;
@@ -349,7 +353,7 @@ search label {
     }
 }
 
-@media ( max-width: 600px ) {
+@media ( max-width: 610px ) {
     .table-wrapper, .calculator-frame {
         font-size: 1em;
         padding: 0;
