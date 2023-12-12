@@ -28,6 +28,7 @@
 
 const API_BASE = 'https://www.dnd5eapi.co';
 const DEBUG = true; // TODO: set to false before submit
+const DEBUG_AMOUNT = 20;
 
 const getJsonFromUrl = async ( url ) => {
     const response = await fetch( url );
@@ -196,7 +197,7 @@ const granimInstance = new Granim( {
     //      and we don't want to wait for them all to load yet
     if ( DEBUG ) {
         const seed = Math.random();
-        const len = 5;
+        const len = DEBUG_AMOUNT;
         const offset = Math.floor( seed * ( spellsList.length - len ) );
         spellsList = spellsList.slice( offset, len + offset );
     }
