@@ -173,7 +173,7 @@ search label {
     border-collapse: collapse;
 }
 
-.table-styles .table-button {
+.table-styles .table-button, .dice-button {
     border-radius: 1em;
     background-color: hsla(208, 10%, 5%, 0.700);
     border: 0.1em solid hsla(208, 10%, 90%, 0.2);
