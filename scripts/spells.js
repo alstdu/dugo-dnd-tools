@@ -27,7 +27,7 @@
 // SOFTWARE.
 
 const API_BASE = 'https://www.dnd5eapi.co';
-const DEBUG = true; // TODO: set to false before submit
+const DEBUG = false; // TODO: set to false before submit
 const DEBUG_AMOUNT = 20;
 
 const getJsonFromUrl = async ( url ) => {
