@@ -1,0 +1,105 @@
+/* Spinning icosahedron from codepen */
+.solid {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	animation: spin 16s infinite linear;
+	transform-style: preserve-3d;
+}
+.solid .side {
+	position: absolute;
+	left: 0;
+	bottom: 50%;
+	border-bottom: 173.2px solid black;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	transform-origin: 50% 0%;
+}
+.solid .side:nth-child(1) {
+	transform: translateY(-18.5px) rotateY(72deg) rotateX(52.62deg);
+	border-bottom-color: rgba(36, 188, 63, 0.4);
+}
+.solid .side:nth-child(2) {
+	transform: translateY(-18.5px) rotateY(144deg) rotateX(52.62deg);
+	border-bottom-color: rgba(185, 82, 245, 0.4);
+}
+.solid .side:nth-child(3) {
+	transform: translateY(-18.5px) rotateY(216deg) rotateX(52.62deg);
+	border-bottom-color: rgba(133, 4, 63, 0.4);
+}
+.solid .side:nth-child(4) {
+	transform: translateY(-18.5px) rotateY(288deg) rotateX(52.62deg);
+	border-bottom-color: rgba(101, 245, 153, 0.4);
+}
+.solid .side:nth-child(5) {
+	transform: translateY(-18.5px) rotateY(360deg) rotateX(52.62deg);
+	border-bottom-color: rgba(139, 237, 61, 0.4);
+}
+.solid .side:nth-child(6) {
+	transform: translateY(361.8px) rotateY(468deg) rotateX(127.38deg);
+	border-bottom-color: rgba(128, 48, 180, 0.4);
+}
+.solid .side:nth-child(7) {
+	transform: translateY(361.8px) rotateY(540deg) rotateX(127.38deg);
+	border-bottom-color: rgba(219, 188, 27, 0.4);
+}
+.solid .side:nth-child(8) {
+	transform: translateY(361.8px) rotateY(612deg) rotateX(127.38deg);
+	border-bottom-color: rgba(166, 219, 2, 0.4);
+}
+.solid .side:nth-child(9) {
+	transform: translateY(361.8px) rotateY(684deg) rotateX(127.38deg);
+	border-bottom-color: rgba(231, 236, 108, 0.4);
+}
+.solid .side:nth-child(10) {
+	transform: translateY(361.8px) rotateY(756deg) rotateX(127.38deg);
+	border-bottom-color: rgba(207, 57, 186, 0.4);
+}
+.solid .side:nth-child(11) {
+	transform: translateY(86.6px) rotateY(828deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(50, 107, 10, 0.4);
+}
+.solid .side:nth-child(12) {
+	transform: translateY(86.6px) rotateY(900deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(65, 89, 71, 0.4);
+}
+.solid .side:nth-child(13) {
+	transform: translateY(86.6px) rotateY(972deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(175, 130, 188, 0.4);
+}
+.solid .side:nth-child(14) {
+	transform: translateY(86.6px) rotateY(1044deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(143, 162, 241, 0.4);
+}
+.solid .side:nth-child(15) {
+	transform: translateY(86.6px) rotateY(1116deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(128, 118, 171, 0.4);
+}
+.solid .side:nth-child(16) {
+	transform: translateY(256.7px) rotateY(1152deg) rotateZ(180deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(4, 157, 89, 0.4);
+}
+.solid .side:nth-child(17) {
+	transform: translateY(256.7px) rotateY(1224deg) rotateZ(180deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(47, 154, 176, 0.4);
+}
+.solid .side:nth-child(18) {
+	transform: translateY(256.7px) rotateY(1296deg) rotateZ(180deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(246, 148, 154, 0.4);
+}
+.solid .side:nth-child(19) {
+	transform: translateY(256.7px) rotateY(1368deg) rotateZ(180deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(168, 187, 116, 0.4);
+}
+.solid .side:nth-child(20) {
+	transform: translateY(256.7px) rotateY(1440deg) rotateZ(180deg) translateZ(170.1px) rotateX(-10.81deg);
+	border-bottom-color: rgba(225, 2, 34, 0.4);
+}
+@keyframes spin {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(360deg) rotateY(720deg) rotateZ(1080deg);
+	}
+}
