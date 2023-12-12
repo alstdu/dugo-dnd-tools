@@ -303,6 +303,22 @@ const granimInstance = new Granim( {
         levelElm.innerHTML += spell.level > 0 ? spell.level : 'Cantrip';
         detailElm.appendChild( levelElm );
 
+        const timeElm = document.createElement( 'p' );
+        const timeSpanElm = document.createElement( 'span' );
+        timeSpanElm.style.fontWeight = 'bold';
+        timeSpanElm.innerText = 'Casting Time: ';
+        timeElm.appendChild( timeSpanElm );
+        timeElm.innerHTML += spell.casting_time;
+        detailElm.appendChild( timeElm );
+
+        const schoolElm = document.createElement( 'p' );
+        const schoolSpanElm = document.createElement( 'span' );
+        schoolSpanElm.style.fontWeight = 'bold';
+        schoolSpanElm.innerText = 'School: ';
+        schoolElm.appendChild( schoolSpanElm );
+        schoolElm.innerHTML += spell.school.name;
+        detailElm.appendChild( schoolElm );
+
         // create a p tag with a span inside
         const durationElm = document.createElement( 'p' );
         const durationSpanElm = document.createElement( 'span' );
