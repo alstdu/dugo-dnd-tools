@@ -324,6 +324,14 @@ const granimInstance = new Granim( {
         rangeElm.innerHTML += spell.range;
         detailElm.appendChild( rangeElm );
 
+        const concentrationElm = document.createElement( 'p' );
+        const concentrationSpan = document.createElement( 'span' );
+        concentrationSpan.innerText = 'Concentration: ';
+        concentrationElm.appendChild( concentrationSpan );
+        concentrationSpan.style.fontWeight = 'bold';
+        concentrationElm.innerHTML += spell.concentration;
+        detailElm.appendChild( concentrationElm );
+
         const componentsElm = document.createElement( 'p' );
         const componentsSpanElm = document.createElement( 'span' );
         componentsSpanElm.style.fontWeight = 'bold';
