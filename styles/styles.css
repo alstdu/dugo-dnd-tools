@@ -241,6 +241,15 @@ search label {
     padding: 0.5em;
 }
 
+#point-table.table-styles tr {
+    display: table-row;
+}
+
+#point-table.table-styles tr td, #point-table.table-styles tr th {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
 .table-styles tr[aria-expanded="false"]:hover, .table-styles tr[aria-expanded="true"] {
     box-shadow: inset 0px 0px 2px 3px rgba(39, 39, 39, 0.3);
     background-color: hsla(0, 10%, 40%, 0.5)
@@ -313,8 +322,6 @@ search label {
     margin-bottom: 0.5em;
 }
 
-/* SPELLS TABLE MEDIA QUERIES */
-
 @media ( max-width: 992px ) {
     #spells-table tr .spell-item-school {
         /* display: none would work but this is way cooler */
@@ -323,6 +330,12 @@ search label {
         transform: scaleX( 0% );
         width: 0;
         height: 0;
+    }
+}
+
+@media ( max-width: 840px ) {
+    .table-styles .table-button {
+        margin: 0 0.1em;
     }
 }
 
@@ -363,6 +376,10 @@ search label {
         width: 0;
         height: 0;
     }
+
+    .table-styles .table-button {
+        padding: 0.1em 0.25em;
+    }
 }
 
 @media ( max-width: 460px ) {
@@ -372,6 +389,12 @@ search label {
         transform: scaleX( 0% );
         width: 0;
         height: 0;
+    }
+
+    #point-table td:has(.score), #point-table td:has(.racial) {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
     }
 }
 
@@ -383,6 +406,10 @@ search label {
     header {
         font-size: 0.75em;
     }
+
+    #point-table {
+        font-size: 0.9em;
+    }
 }
 
 @media ( max-width: 370px ) {
@@ -393,10 +420,18 @@ search label {
         width: 0;
         height: 0;
     }
+
+    #point-table {
+        font-size: 0.8em;
+    }
 }
 
 @media ( max-width: 325px ) {
     search form input {
         width: 150px;
+    }
+
+    #point-table {
+        font-size: 0.7em;
     }
 }
