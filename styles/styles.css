@@ -223,7 +223,7 @@ search label {
     color: green;
 }
 
-.table-wrapper {
+.table-wrapper, .calculator-frame {
     width: 100%;
     max-width: 1200px;
     padding: 1em;
@@ -327,7 +327,7 @@ search label {
 }
 
 @media ( max-width: 768px ) {
-    .table-wrapper {
+    .table-wrapper, .calculator-frame {
         font-size: 0.75em;
     }
 
@@ -337,8 +337,9 @@ search label {
 }
 
 @media ( max-width: 600px ) {
-    .table-wrapper {
+    .table-wrapper, .calculator-frame {
         font-size: 1em;
+        padding: 0;
     }
 
     body {
@@ -351,10 +352,6 @@ search label {
 
     .table-styles thead tr {
         border-radius: 0;
-    }
-
-    .table-wrapper {
-        padding: 0;
     }
 }
 
