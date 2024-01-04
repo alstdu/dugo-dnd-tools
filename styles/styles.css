@@ -165,6 +165,17 @@ nav ul a:hover {
     font-size: large;
 }
 
+.dice-controls-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-and-remove-dice-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .display-dice-result {
     text-align: center;
     font-weight: bold;
