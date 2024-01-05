@@ -52,7 +52,7 @@ document.querySelector( '.d20-roll-button' )?.addEventListener( 'click', async (
 
 document.querySelector( '.d10-roll-button' )?.addEventListener( 'click', async () => {
     await diceBoxInit;
-    const result = await diceBox.roll( { 
+    const result = await diceBox.roll( {
         qty: 1,
         sides: 10,
         themeColor: '#ffdfdd',
@@ -90,13 +90,40 @@ document.querySelector( '.d4-roll-button' )?.addEventListener( 'click', async ()
     setDiceResult( result[0].value );
 } );
 
+const addDiceButton = document.querySelector( '.add-dice' );
+const removeDiceButton = document.querySelector( '.remove-dice' );
+const diceCounter = document.querySelector( '.dice-counter' );
+
+addDiceButton.addEventListener( 'click', () => {
+    const currentDiceCount= +diceCounter.innerText;
+    diceCounter.innerText = currentDiceCount + 1;
+    removeDiceButton.disabled = false;
+} );
+
+removeDiceButton.addEventListener( 'click', () => {
+    const currentDiceCount= +diceCounter.innerText;
+    diceCounter.innerText = currentDiceCount - 1;
+    if ( currentDiceCount - 1 == 0 ) {
+        removeDiceButton.disabled = true;
+    };
+} );
+
+const setDiceQuantity = () => {
+    const currentDiceCount= +diceCounter.innerText;
+    return;
+};
+
 // set whatever our dice result value from each roll was to the innerText of the div
 const setDiceResult = ( diceResult ) => {
     document.querySelector( '.display-dice-result' ).innerHTML = diceResult;
 };
 
-// set up the canvas and states for the gradients
-// for this one we just want one background state
+// TO DO:
+// need to make it so that you can add dice. I'm assuming we would want the quantity in the roll
+// property to be equal to a user input somehow
+// We could maybe make buttons that counts up a number and that innerText would
+// be what got set as the quantity ? like calling a function to get the
+// quantity ?
 
 // The MIT License (MIT)
 
