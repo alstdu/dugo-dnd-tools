@@ -93,26 +93,30 @@ document.querySelector( '.d4-roll-button' )?.addEventListener( 'click', async ()
 } );
 
 // TODO: For Each on Query Selector All
-const addDiceButton = document.querySelector( '.add-dice' );
-const removeDiceButton = document.querySelector( '.remove-dice' );
-const diceCounter = document.querySelector( '.dice-counter' );
+const diceControls = document.querySelectorAll( '.add-and-remove-dice-buttons' );
+console.log( diceControls );
 
-addDiceButton.addEventListener( 'click', () => {
-    const currentDiceCount= +diceCounter.innerText;
-    diceCounter.innerText = currentDiceCount + 1;
-    removeDiceButton.disabled = false;
-} );
+diceControls.forEach( ( diceControl ) => {
+    const addDice = diceControl.querySelector( '.add-dice' );
+    addDice.addEventListener( 'click', () => {
+        const p = diceControl.querySelector( '.dice-counter' );
+        let pText = parseInt( p.innerText );
+        p.innerHTML = ++pText;
+        removeDice.disabled = false;
+    } );
 
-removeDiceButton.addEventListener( 'click', () => {
-    const currentDiceCount= +diceCounter.innerText;
-    diceCounter.innerText = currentDiceCount - 1;
-    if ( currentDiceCount - 1 == 0 ) {
-        removeDiceButton.disabled = true;
-    };
+    const removeDice = diceControl.querySelector( '.remove-dice' );
+    removeDice.addEventListener( 'click', () => {
+        const p = diceControl.querySelector( '.dice-counter' );
+        let pText = parseInt( p.innerText );
+        p.innerHTML = --pText;
+        if ( p.innerHTML - 1 == 0 ) {
+            removeDice.disabled = true;
+        };
+    } );
 } );
 
 const getDiceQuantity = () => {
-    console.log( 'hi' );
     return +diceCounter.innerText;
 };
 
