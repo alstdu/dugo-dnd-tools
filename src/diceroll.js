@@ -31,75 +31,14 @@ const diceBox = new DiceBox( '#dice-box', {
 
 const diceBoxInit = diceBox.init();
 
-// document.querySelector( '#roll-button' ).addEventListener( 'click', diceBox.roll );
-// document.querySelector( '#roll-button' ).addEventListener( 'click', diceBox.roll( {
-//     qty: 1, // optional - the number of dice to be rolled. Defaults to 1
-//     sides: 20, // the type of die to be rolled. Either a number such as 20
-//     themeColor: '#ffffff', // optional - HEX value for the theme's material color
-// } ) );
-// TODO: honestly need to understand why this worked a bit more
-document.querySelector( '.d20-roll-button' )?.addEventListener( 'click', async () => {
-    await diceBoxInit;
-    const rollConfig = { // .roll returns a promise
-        qty: getDiceQuantity(), // optional - the number of dice to be rolled. Defaults to 1
-        sides: 20, // the type of die to be rolled. Either a number such as 20
-        themeColor: '#ffffff', // optional - HEX value for the theme's material color
-    };
-    console.log( rollConfig );
-    const result = await diceBox.roll( rollConfig );
-    setDiceResult( result[0].value ); // passes the .value of the result array to our innerText function
-} );
-
-// and now repeat with the other dice
-
-document.querySelector( '.d10-roll-button' )?.addEventListener( 'click', async () => {
-    await diceBoxInit;
-    const result = await diceBox.roll( {
-        qty: 1,
-        sides: 10,
-        themeColor: '#ffdfdd',
-    } );
-    setDiceResult( result[0].value );
-} );
-
-document.querySelector( '.d8-roll-button' )?.addEventListener( 'click', async () => {
-    await diceBoxInit;
-    const result = await diceBox.roll( {
-        qty: 1,
-        sides: 8,
-        themeColor: '#424242',
-    } );
-    setDiceResult( result[0].value );
-} );
-
-document.querySelector( '.d6-roll-button' )?.addEventListener( 'click', async () => {
-    await diceBoxInit;
-    const result = await diceBox.roll( {
-        qty: 1,
-        sides: 6,
-        themeColor: '#62C3F1',
-    } );
-    setDiceResult( result[0].value );
-} );
-
-document.querySelector( '.d4-roll-button' )?.addEventListener( 'click', async () => {
-    await diceBoxInit;
-    const result = await diceBox.roll( {
-        qty: 1,
-        sides: 4,
-        themeColor: '#62C322',
-    } );
-    setDiceResult( result[0].value );
-} );
-
-// TODO: For Each on Query Selector All
-const diceControls = document.querySelectorAll( '.add-and-remove-dice-buttons' );
+const diceControls = document.querySelectorAll( '.dice-controls-container' );
 console.log( diceControls );
 
 diceControls.forEach( ( diceControl ) => {
+    const p = diceControl.querySelector( '.dice-counter' );
+
     const addDice = diceControl.querySelector( '.add-dice' );
     addDice.addEventListener( 'click', () => {
-        const p = diceControl.querySelector( '.dice-counter' );
         let pText = parseInt( p.innerText );
         p.innerHTML = ++pText;
         removeDice.disabled = false;
@@ -107,30 +46,32 @@ diceControls.forEach( ( diceControl ) => {
 
     const removeDice = diceControl.querySelector( '.remove-dice' );
     removeDice.addEventListener( 'click', () => {
-        const p = diceControl.querySelector( '.dice-counter' );
         let pText = parseInt( p.innerText );
         p.innerHTML = --pText;
         if ( p.innerHTML - 1 == 0 ) {
             removeDice.disabled = true;
         };
     } );
-} );
 
-const getDiceQuantity = () => {
-    return +diceCounter.innerText;
-};
+    const rollDice = diceControl.querySelector( '.roll-button' );
+    rollDice.addEventListener( 'click', async () => {
+        const currentDiceCount = p.innerHTML;
+        const sides = parseInt( rollDice.dataset.sides );
+        const color = rollDice.dataset.color;
+        await diceBoxInit;
+        const result = await diceBox.roll( {
+            qty: currentDiceCount,
+            sides: sides,
+            themeColor: color,
+        } );
+        setDiceResult( result.reduce( ( sum, val ) => sum += val.value, 0 ) );
+    } );
+} );
 
 // set whatever our dice result value from each roll was to the innerText of the div
 const setDiceResult = ( diceResult ) => {
     document.querySelector( '.display-dice-result' ).innerHTML = diceResult;
 };
-
-// TO DO:
-// need to make it so that you can add dice. I'm assuming we would want the quantity in the roll
-// property to be equal to a user input somehow
-// We could maybe make buttons that counts up a number and that innerText would
-// be what got set as the quantity ? like calling a function to get the
-// quantity ?
 
 // The MIT License (MIT)
 
