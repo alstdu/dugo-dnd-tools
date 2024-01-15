@@ -28,7 +28,7 @@
 
 const API_BASE = 'https://www.dnd5eapi.co';
 const DEBUG = false; // TODO: set to false before submit
-const DEBUG_AMOUNT = 20;
+const DEBUG_AMOUNT = 5;
 
 const getJsonFromUrl = async ( url ) => {
     const response = await fetch( url );
