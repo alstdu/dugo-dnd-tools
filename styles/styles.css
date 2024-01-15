@@ -146,28 +146,32 @@ nav ul a:hover {
 
 .dice-ui {
     position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .overlay-dice-ui {
     position: absolute;
-    transform: translateX( -50% );
+    /* transform: translateX( -50% ); */
+    right: 0;
+    left: 0;
 }
 
 .dice-button-container {
-    display: flex;
-    justify-content: space-between;
-    width: 20em;
-}
+    display: grid;
+    grid-template-columns: repeat(6, auto);
 
-.dice-button-container > button {
-    width: 5em;
-    height: 2em;
-    font-size: large;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .dice-controls-container {
+    grid-column: auto;
     display: flex;
     flex-direction: column;
+    width: min-content;
+    margin: 0 auto;
 }
 
 .add-and-remove-dice-buttons {
@@ -325,7 +329,6 @@ search label {
     border: unset;
     color: unset;
     font-size: unset;
-    /* translateX(0.5em); */
     transform: scale(1.2);
     font-weight: bold;
 }
@@ -406,6 +409,10 @@ search label {
     .table-styles .table-button {
         margin: 0 0.1em;
     }
+
+    .dice-button-container {
+        font-size: 0.9em;
+    }
 }
 
 @media ( max-width: 768px ) {
@@ -434,6 +441,10 @@ search label {
 
     .table-styles thead tr {
         border-radius: 0;
+    }
+
+    .dice-button-container {
+        font-size: 1em;
     }
 }
 
@@ -464,6 +475,10 @@ search label {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
+    }
+
+    .dice-controls-container {
+        grid-column: auto / span 2;
     }
 }
 
@@ -502,5 +517,9 @@ search label {
 
     #point-table {
         font-size: 0.7em;
+    }
+
+    .dice-controls-container {
+        grid-column: auto / span 3;
     }
 }

@@ -26,7 +26,7 @@ import DiceBox from '@3d-dice/dice-box';
 
 const diceBox = new DiceBox( '#dice-box', {
     assetPath: '/public/assets/',
-    scale: 8, // how big the dice are
+    scale: 5, // how big the dice are
 } );
 
 const diceBoxInit = diceBox.init();
