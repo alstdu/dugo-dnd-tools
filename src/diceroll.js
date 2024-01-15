@@ -48,7 +48,7 @@ diceControls.forEach( ( diceControl ) => {
     removeDice.addEventListener( 'click', () => {
         let pText = parseInt( p.innerText );
         p.innerHTML = --pText;
-        if ( p.innerHTML - 1 == 0 ) {
+        if ( p.innerHTML - 1 <= 0 ) {
             removeDice.disabled = true;
         };
     } );
