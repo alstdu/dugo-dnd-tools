@@ -11,6 +11,8 @@ Include D12 dice
 
 Add together all die rolled and display the final total
 
+Increase usability on mobile devices
+
 # Plugins Used
 overlay scroll bars  https://kingsora.github.io/OverlayScrollbars/#!overview // custom scroll bar // MIT License // Copyright (c) 2022 Rene Haas
 
