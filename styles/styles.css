@@ -546,3 +546,22 @@ search label {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+.roll-all-button {
+    display: block;
+    margin: 1em auto;
+    border-radius: 1em;
+    background-color: hsla(208, 10%, 5%, 0.700);
+    border: 0.1em solid hsla(208, 10%, 90%, 0.2);
+    border-radius: 0.25em;
+    padding: 0.1em 1.5em;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.roll-all-button:disabled {
+    background-color: hsla(208, 10%, 50%, 0.2);
+    color: hsla(208, 10%, 95%, 0.25);
+    filter: blur(1px);
+}

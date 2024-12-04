@@ -1,4 +1,3 @@
-
 // The MIT License (MIT)
 
 // Copyright (c) 2021 3Ddice
@@ -32,7 +31,7 @@ const diceBox = new DiceBox( '#dice-box', {
 const diceBoxInit = diceBox.init();
 
 const diceControls = document.querySelectorAll( '.dice-controls-container' );
-console.log( diceControls );
+const rollAllButton = document.querySelector( '.roll-all-button' );
 
 diceControls.forEach( ( diceControl ) => {
     const p = diceControl.querySelector( '.dice-counter' );
@@ -48,8 +47,9 @@ diceControls.forEach( ( diceControl ) => {
     removeDice.addEventListener( 'click', () => {
         let pText = parseInt( p.innerText );
         p.innerHTML = --pText;
-        if ( p.innerHTML - 1 <= 0 ) {
+        if ( p.innerHTML <= 0 ) {
             removeDice.disabled = true;
+            p.innerHTML = 0;
         };
     } );
 
@@ -66,6 +66,36 @@ diceControls.forEach( ( diceControl ) => {
         } );
         setDiceResult( result.reduce( ( sum, val ) => sum += val.value, 0 ) );
     } );
+} );
+
+// New roll all functionality
+rollAllButton.addEventListener( 'click', async () => {
+    await diceBoxInit;
+    
+    const diceToRoll = [];
+    
+    // Gather all dice configurations
+    diceControls.forEach( ( diceControl ) => {
+        const qty = parseInt( diceControl.querySelector( '.dice-counter' ).innerHTML );
+        const rollButton = diceControl.querySelector( '.roll-button' );
+        const sides = parseInt( rollButton.dataset.sides );
+        const color = rollButton.dataset.color;
+        
+        if ( qty > 0 ) {
+            diceToRoll.push( {
+                qty,
+                sides,
+                themeColor: color
+            } );
+        }
+    } );
+    
+    // Roll all dice configurations at once
+    if ( diceToRoll.length > 0 ) {
+        const results = await diceBox.roll( diceToRoll );
+        const totalSum = results.reduce( ( sum, val ) => sum + val.value, 0 );
+        setDiceResult( totalSum );
+    }
 } );
 
 // set whatever our dice result value from each roll was to the innerText of the div
