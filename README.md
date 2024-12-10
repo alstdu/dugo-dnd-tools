@@ -5,6 +5,8 @@ This project features a dice roller page, a spells list table, and a point buy c
 
 # Features Added After Course
 
+Improve dice selection and roll UI
+
 Roll multiple die on dice roll page
 
 Include D12 dice
